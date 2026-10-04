@@ -62,7 +62,7 @@ font_gascon = ImageFont.truetype("segoeuib.ttf", 54)
 font_sans_large = ImageFont.truetype("segoeuib.ttf", 24)
 font_sans_regular = ImageFont.truetype("segoeui.ttf", 18)
 font_sans_small = ImageFont.truetype("segoeuib.ttf", 14)
-font_mono_bold = ImageFont.truetype("consolab.ttf", 23)
+font_mono_bold = ImageFont.truetype("consolab.ttf", 21)
 
 draw = ImageDraw.Draw(canvas)
 
@@ -215,7 +215,7 @@ draw.rounded_rectangle([url_card_x, url_card_y, url_card_x + url_card_w, url_car
 draw.text((url_card_x + 22, url_card_y + 14), "EXPLORE THE LIVE WEBSITE & INTERACTIVE BADGE:", fill=(0, 229, 255), font=font_sans_small)
 
 # URL string in bold monospace with neon glow
-url_text = "https://jhonpaulo-gascon.netlify.app"
+url_text = "https://paulogascon.github.io/portfolio/"
 draw.text((url_card_x + 22, url_card_y + 44), url_text, fill=(255, 255, 255), font=font_mono_bold)
 
 # Sub-feature Pills inside the URL box
