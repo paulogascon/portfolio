@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhon Paulo Gascon | Portfolio — BSIT Student, UI/UX Designer & Motion Editor</title>
+    <meta name="description" content="Portfolio of Jhon Paulo V. Gascon (JP) — 2nd Year BSIT Student at STI West Negros University, UI/UX Designer, Frontend Developer, and Motion Graphics Video Editor based in Bacolod City, Philippines.">
+    <meta name="author" content="Jhon Paulo V. Gascon">
+    <meta name="theme-color" content="#070a13">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jhonpaulo-gascon.netlify.app/">
+    <meta property="og:title" content="Jhon Paulo Gascon | Portfolio — BSIT Student & Creative Editor">
+    <meta property="og:description" content="Explore the creative works, UI/UX prototypes, and motion graphic reels of Jhon Paulo Gascon (JP) from STI West Negros University.">
+    <meta property="og:image" content="https://jhonpaulo-gascon.netlify.app/assets/images/share-preview-v2.png">
+    <meta property="og:image:secure_url" content="https://jhonpaulo-gascon.netlify.app/assets/images/share-preview-v2.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jhon Paulo Gascon Portfolio Banner with 3D STI ID Card">
+    <meta property="og:locale" content="en_PH">
+    <meta property="og:site_name" content="Jhon Paulo Gascon Portfolio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jhonpaulo-gascon.netlify.app/">
+    <meta name="twitter:title" content="Jhon Paulo Gascon | Portfolio — BSIT Student & Creative Editor">
+    <meta name="twitter:description" content="Explore the creative works, UI/UX prototypes, and motion graphic reels of Jhon Paulo Gascon (JP) from STI West Negros University.">
+    <meta name="twitter:image" content="https://jhonpaulo-gascon.netlify.app/assets/images/share-preview-v2.png">
+
+    <!-- Performance: Preload Critical Signature Font -->
+    <link rel="preload" href="assets/fonts/modernline-bold.otf" as="font" type="font/otf" crossorigin>
+
+    <!-- DNS Prefetch & Preconnect for External CDNs -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Immediate Scroll Guard: Guarantees page starts at top (0, 0) on fresh mobile load -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+</head>
+<body>
+    <!-- Background Ambient Glow Orbs -->
+    <div class="glow-orb orb-1" aria-hidden="true"></div>
+    <div class="glow-orb orb-2" aria-hidden="true"></div>
+    <div class="glow-orb orb-3" aria-hidden="true"></div>
+    <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="nav-brand">
+                <span class="brand-first">Jhon&nbsp;Paulo</span> <span class="brand-last">Gascon</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#videos" class="nav-link">Motion & Videos</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button in Navbar -->
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+                    <i class="fa-solid fa-moon moon-icon"></i>
+                    <i class="fa-solid fa-sun sun-icon"></i>
+                </button>
+
+                <!-- Resume Download CTA -->
+                <a href="assets/resume.pdf" class="btn btn-outline btn-sm nav-resume-btn" download="Jhon_Paulo_Gascon_Resume.pdf">
+                    <i class="fa-solid fa-file-arrow-down"></i> Resume
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open mobile menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with Interactive Physics Lanyard ID Card -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span>Open for Creative Projects & Tech Collaborations</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text">Jhon Paulo Gascon</span>
+                    </h1>
+                    
+                    <div class="typing-container">
+                        <span class="typing-prefix">I am a </span>
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+
+                    <p class="hero-description">
+                        2nd Year BSIT Student at <strong>STI West Negros University</strong>. Passionate about blending motion graphics, intuitive Figma UI/UX design, and clean frontend web development.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#videos" class="btn btn-primary">
+                            <i class="fa-solid fa-play"></i> Watch Video Projects
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fa-solid fa-folder-open"></i> Explore Projects
+                        </a>
+                        <a href="assets/resume.pdf" class="btn btn-outline" download="Jhon_Paulo_Gascon_Resume.pdf">
+                            <i class="fa-solid fa-download"></i> Download CV
+                        </a>
+                    </div>
+
+                    <!-- Quick Social / Links -->
+                    <div class="hero-socials">
+                        <a href="mailto:jhonpaulosolsona12@gmail.com" class="social-icon" title="Personal Email" aria-label="Personal Email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="mailto:gascon.820357@wnu.sti.edu.ph" class="social-icon" title="STI Institutional Email" aria-label="STI Email">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://figma.com" target="_blank" rel="noopener noreferrer" class="social-icon" title="Figma Community" aria-label="Figma">
+                            <i class="fa-brands fa-figma"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive 3D Physics Lanyard ID Badge -->
+                <div class="hero-visual">
+                    <div class="lanyard-wrapper" id="lanyardWrapper">
+                        <!-- Top Ceiling Mount / Anchor Bracket -->
+                        <div class="lanyard-ceiling-anchor">
+                            <div class="ceiling-bracket"></div>
+                            <div class="anchor-ring"></div>
+                        </div>
+
+                        <!-- Canvas where the spring-physics ribbon strap is rendered -->
+                        <canvas id="lanyardCanvas" class="lanyard-canvas"></canvas>
+
+                        <!-- Hanging Interactive ID Card Badge (Spring-Physics Driven) -->
+                        <div class="hanging-badge-card" id="hangingBadge" role="button" tabindex="0" aria-label="Interactive ID Badge — Click and drag to swing">
+                            <!-- Authentic STI Lanyard Hardware Assembly (Buckle, STI Seal & Swivel Lobster Clasp - Behind Card) -->
+                            <div class="badge-hardware-assembly hardware-behind">
+                                <img src="assets/images/lanyard-hardware.png" alt="STI Official Lanyard Buckle & Clasp" class="lanyard-hardware-img" width="60" height="234" fetchpriority="high" draggable="false">
+                            </div>
+
+                            <!-- Acrylic Protective Badge Sleeve with Real Transparent Slot Hole -->
+                            <div class="badge-sleeve">
+                                <img src="assets/images/id-card-cropped.png?v=clasp" alt="Jhon Paulo V. Gascon STI Student ID Card" class="badge-id-img" width="220" height="340" fetchpriority="high" draggable="false">
+                                <div class="badge-glare"></div>
+                            </div>
+
+                            <!-- Front Metal Clasp Hook (Loops in Front of the Black Card Holder) -->
+                            <div class="badge-hardware-front">
+                                <img src="assets/images/lanyard-clasp-front.png" alt="STI Clasp Hook Front" class="lanyard-clasp-front-img" width="60" height="234" fetchpriority="high" draggable="false">
+                            </div>
+
+                            <!-- Interactive Drag Hint Pill -->
+                            <div class="drag-hint-pill" id="dragHint">
+                                <i class="fa-solid fa-hand-pointer"></i>
+                                <span>Drag & Swing Me!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about" class="scroll-down-indicator" aria-label="Scroll to About section">
+                <span>Discover More</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About Me Section — Modern Bento Grid Layout -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">Beyond Code — <span class="gradient-text">Who I Am</span></h2>
+                    <p class="section-subtitle">Bridging creative storytelling, intuitive UI design, and computer science fundamentals.</p>
+                </div>
+
+                <!-- Bento Grid Container -->
+                <div class="bento-grid">
+                    <!-- Bento 1: Large Bio Card -->
+                    <div class="bento-card bento-bio" data-tilt>
+                        <div class="bento-badge"><i class="fa-solid fa-user-astronaut"></i> My Journey</div>
+                        <h3 class="bento-title">Hi, I'm JP — IT Student & Digital Creator</h3>
+                        <p>
+                            I'm <strong>Jhon Paulo V. Gascon</strong>, currently in my 2nd Year of <strong>BS Information Technology</strong> at <strong>STI West Negros University</strong> in Bacolod City.
+                        </p>
+                        <p>
+                            My creative journey started with a fascination for <strong>motion graphics and video editing</strong> — choreographing keyframe transitions, typography, and visual pacing. That design sensibility naturally carried over into <strong>UI/UX Design in Figma</strong> and frontend web development.
+                        </p>
+                        <p>
+                            To me, code is the canvas that brings ideas to life, and design is the empathy that makes technology accessible to everyone.
+                        </p>
+                        
+                        <div class="bento-stats-row">
+                            <div class="bento-stat">
+                                <span class="stat-number">2nd</span>
+                                <span class="stat-label">Year BSIT (2G)</span>
+                            </div>
+                            <div class="bento-stat">
+                                <span class="stat-number">23</span>
+                                <span class="stat-label">Academic Units</span>
+                            </div>
+                            <div class="bento-stat">
+                                <span class="stat-number">4+</span>
+                                <span class="stat-label">Creative Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento 2: Focus Areas Card -->
+                    <div class="bento-card bento-focus" data-tilt>
+                        <div class="bento-badge"><i class="fa-solid fa-crosshairs"></i> Focus Areas</div>
+                        <div class="focus-areas-list">
+                            <div class="focus-item">
+                                <div class="focus-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                                <div>
+                                    <h4>UI/UX Prototyping</h4>
+                                    <p>Designing intuitive, user-centered interfaces in Figma with interactive prototypes.</p>
+                                </div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-icon"><i class="fa-solid fa-code"></i></div>
+                                <div>
+                                    <h4>Modern Web Development</h4>
+                                    <p>Building responsive, accessible websites with HTML, CSS, and JavaScript.</p>
+                                </div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-icon"><i class="fa-solid fa-microchip"></i></div>
+                                <div>
+                                    <h4>Computer Science Fundamentals</h4>
+                                    <p>Data structures, algorithms, and platform technologies that power real software.</p>
+                                </div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-icon"><i class="fa-solid fa-robot"></i></div>
+                                <div>
+                                    <h4>Automation & AI Integrations</h4>
+                                    <p>Leveraging AI tools and scripting to automate workflows and boost productivity.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento 3: Design & Motion Philosophy -->
+                    <div class="bento-card bento-philosophy" data-tilt>
+                        <div class="bento-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Creative Edge</div>
+                        <h3 class="bento-title">Motion Meets Function</h3>
+                        <p class="bento-text">
+                            A great digital interface should not just work; it should feel effortless, dynamic, and memorable through purposeful motion and clean aesthetics.
+                        </p>
+                        <div class="philosophy-tags">
+                            <span class="chip-tag"><i class="fa-solid fa-bezier-curve"></i> Keyframe Curves</span>
+                            <span class="chip-tag"><i class="fa-solid fa-eye"></i> Visual Hierarchy</span>
+                            <span class="chip-tag"><i class="fa-solid fa-mobile"></i> Responsive Design</span>
+                        </div>
+                    </div>
+
+                    <!-- Bento 4: University & College Journey -->
+                    <div class="bento-card bento-school" data-tilt>
+                        <div class="school-logo-bar">
+                            <img src="assets/images/sti-logo.png" alt="STI WNU Logo" class="bento-sti-logo" width="52" height="52" loading="lazy" decoding="async">
+                            <div>
+                                <h4 class="school-name">STI West Negros University</h4>
+                                <p class="school-degree">BS Information Technology • Batch 2025–Present</p>
+                            </div>
+                        </div>
+                        <p class="bento-text">
+                            Active coursework includes <strong>Data Structures & Algorithms</strong>, <strong>Human-Computer Interaction</strong>, and <strong>Platform Technologies</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Bento 5: Core Toolkit Snapshot -->
+                    <div class="bento-card bento-toolkit" data-tilt>
+                        <div class="bento-badge"><i class="fa-solid fa-toolbox"></i> Primary Stack</div>
+                        <div class="toolkit-grid">
+                            <div class="tool-pill"><i class="fa-brands fa-figma"></i> Figma</div>
+                            <div class="tool-pill"><i class="fa-brands fa-html5"></i> HTML5</div>
+                            <div class="tool-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+                            <div class="tool-pill"><i class="fa-brands fa-js"></i> JavaScript</div>
+                            <div class="tool-pill"><i class="fa-brands fa-java"></i> Java</div>
+                            <div class="tool-pill"><i class="fa-solid fa-clapperboard"></i> Motion Graphics</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Motion Graphics & Video Edits Showcase Section (Hover to Play / Custom UI) -->
+        <section class="section videos-section" id="videos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Motion & Creative Reels</span>
+                    <h2 class="section-title">Video Edits & <span class="gradient-text">Motion Graphics</span></h2>
+                    <p class="section-subtitle">Plays automatically as you scroll into view. Tap left or right on any video to seek backward/forward.</p>
+                </div>
+
+                <div class="videos-grid">
+                    <!-- Video 1: Google Motion Graphics Edit -->
+                    <div class="video-card custom-hover-card" data-tilt>
+                        <div class="video-player-container">
+                            <video class="portfolio-video" poster="assets/images/poster-google.jpg" preload="metadata" muted playsinline loop>
+                                <source src="assets/videos/mograph-google.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            
+                            <!-- Custom Clean UI Overlay -->
+                            <div class="video-overlay-ui">
+                                <div class="video-play-hint">
+                                    <div class="play-icon-glow"><i class="fa-solid fa-play"></i></div>
+                                    <span class="hint-text">Hover to Play</span>
+                                </div>
+                                
+                                <div class="video-badge-top">
+                                    <span class="video-duration-badge"><i class="fa-solid fa-film"></i> Motion Concept</span>
+                                    <button class="video-mute-toggle" aria-label="Toggle Sound" title="Toggle Sound">
+                                        <i class="fa-solid fa-volume-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <div class="video-progress-track">
+                                    <div class="video-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-tags">
+                                <span class="tag">Motion Graphics</span>
+                                <span class="tag">Keyframe Animation</span>
+                                <span class="tag">Typography</span>
+                            </div>
+                            <h3 class="video-title">Google Search Concept — Motion Graphics</h3>
+                            <p class="video-caption">
+                                Simple mograph Google edit, crafted with smooth keyframe curves, kinetic typography choreography, and clean brand transitions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2: Personal Portfolio Motion Reel -->
+                    <div class="video-card custom-hover-card" data-tilt>
+                        <div class="video-player-container">
+                            <video class="portfolio-video" poster="assets/images/poster-reel.jpg" preload="metadata" muted playsinline loop>
+                                <source src="assets/videos/portfolio-motion-reel.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            
+                            <!-- Custom Clean UI Overlay -->
+                            <div class="video-overlay-ui">
+                                <div class="video-play-hint">
+                                    <div class="play-icon-glow"><i class="fa-solid fa-play"></i></div>
+                                    <span class="hint-text">Hover to Play</span>
+                                </div>
+                                
+                                <div class="video-badge-top">
+                                    <span class="video-duration-badge"><i class="fa-solid fa-sparkles"></i> Creative Reel</span>
+                                    <button class="video-mute-toggle" aria-label="Toggle Sound" title="Toggle Sound">
+                                        <i class="fa-solid fa-volume-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <div class="video-progress-track">
+                                    <div class="video-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-tags">
+                                <span class="tag">Creative Portfolio</span>
+                                <span class="tag">Visual Edit</span>
+                                <span class="tag">Motion Design</span>
+                            </div>
+                            <h3 class="video-title">Dynamic Personal Showcase & Motion Reel</h3>
+                            <p class="video-caption">
+                                A dynamic personal showcase crafted with rhythmic editing, layered visuals, and creative kinetic transitions highlighting my editing journey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3: 1STI Motion Graphics Edit -->
+                    <div class="video-card custom-hover-card" data-tilt>
+                        <div class="video-player-container">
+                            <video class="portfolio-video" poster="assets/images/poster-sti.jpg" preload="metadata" muted playsinline loop>
+                                <source src="assets/videos/sti-mograph.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            
+                            <!-- Custom Clean UI Overlay -->
+                            <div class="video-overlay-ui">
+                                <div class="video-play-hint">
+                                    <div class="play-icon-glow"><i class="fa-solid fa-play"></i></div>
+                                    <span class="hint-text">Hover to Play</span>
+                                </div>
+                                
+                                <div class="video-badge-top">
+                                    <span class="video-duration-badge"><i class="fa-solid fa-graduation-cap"></i> STI Campus Reel</span>
+                                    <button class="video-mute-toggle" aria-label="Toggle Sound" title="Toggle Sound">
+                                        <i class="fa-solid fa-volume-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <div class="video-progress-track">
+                                    <div class="video-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-tags">
+                                <span class="tag">Campus Branding</span>
+                                <span class="tag">STI WNU</span>
+                                <span class="tag">Hype Video</span>
+                            </div>
+                            <h3 class="video-title">Are you ready, STI'ers? — Motion Hype Edit</h3>
+                            <p class="video-caption">
+                                High-octane campus motion graphics edit designed to ignite spirit and excitement across STI West Negros University events.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Video 4: Updated Video 4 (New Project 67) -->
+                    <div class="video-card custom-hover-card" data-tilt>
+                        <div class="video-player-container">
+                            <video class="portfolio-video" poster="assets/images/poster-city.jpg" preload="metadata" muted playsinline loop>
+                                <source src="assets/videos/city-story.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            
+                            <!-- Custom Clean UI Overlay -->
+                            <div class="video-overlay-ui">
+                                <div class="video-play-hint">
+                                    <div class="play-icon-glow"><i class="fa-solid fa-play"></i></div>
+                                    <span class="hint-text">Hover to Play</span>
+                                </div>
+                                
+                                <div class="video-badge-top">
+                                    <span class="video-duration-badge"><i class="fa-solid fa-clapperboard"></i> Cinematic Mood</span>
+                                    <button class="video-mute-toggle" aria-label="Toggle Sound" title="Toggle Sound">
+                                        <i class="fa-solid fa-volume-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <div class="video-progress-track">
+                                    <div class="video-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-tags">
+                                <span class="tag">Visual Storytelling</span>
+                                <span class="tag">Color Grading</span>
+                                <span class="tag">Cinematic</span>
+                            </div>
+                            <h3 class="video-title">City Memories — Cinematic Visual Reel</h3>
+                            <p class="video-caption">
+                                "I was once lost in this city too, but for some reason, i found my way back w/o even realizing it. (i'm not talking about the place :>)" — Atmospheric visual narrative.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section skills-section" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Tech Stack & Creative Suite</span>
+                    <h2 class="section-title">My Skills & <span class="gradient-text">Competencies</span></h2>
+                    <p class="section-subtitle">A balanced fusion of design tools, programming languages, and web technologies.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Motion & Video Editing Card -->
+                    <div class="skill-category-card" data-tilt>
+                        <div class="category-header">
+                            <div class="category-icon video-icon-glow"><i class="fa-solid fa-video"></i></div>
+                            <div>
+                                <h3>Motion & Video Editing</h3>
+                                <p>Kinetic animation & visual storytelling</p>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-items">
+                            <div class="skill-badge"><i class="fa-solid fa-bezier-curve"></i> Keyframe Motion Curves</div>
+                            <div class="skill-badge"><i class="fa-solid fa-font"></i> Kinetic Typography</div>
+                            <div class="skill-badge"><i class="fa-solid fa-sliders"></i> Color Grading & LUTs</div>
+                            <div class="skill-badge"><i class="fa-solid fa-film"></i> Sound Design Sync</div>
+                            <div class="skill-badge"><i class="fa-solid fa-photo-film"></i> Video Pace & Flow</div>
+                        </div>
+                    </div>
+
+                    <!-- UI/UX & Design Card -->
+                    <div class="skill-category-card" data-tilt>
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-brands fa-figma"></i></div>
+                            <div>
+                                <h3>UI/UX & Prototyping</h3>
+                                <p>Human-centered design & layouts</p>
+                            </div>
+                        </div>
+
+                        <div class="skill-items">
+                            <div class="skill-badge"><i class="fa-brands fa-figma"></i> Figma (Student Tier)</div>
+                            <div class="skill-badge"><i class="fa-solid fa-layer-group"></i> Design Systems & Auto-Layout</div>
+                            <div class="skill-badge"><i class="fa-solid fa-pen-ruler"></i> Wireframing & High-Fi Mockups</div>
+                            <div class="skill-badge"><i class="fa-solid fa-eye"></i> Human-Computer Interaction (HCI)</div>
+                            <div class="skill-badge"><i class="fa-solid fa-wand-magic"></i> Interactive Micro-interactions</div>
+                        </div>
+                    </div>
+
+                    <!-- Frontend Development Card -->
+                    <div class="skill-category-card" data-tilt>
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-brands fa-html5"></i></div>
+                            <div>
+                                <h3>Frontend Web Development</h3>
+                                <p>Modern responsive markup & styling</p>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-items">
+                            <div class="skill-badge"><i class="fa-brands fa-html5"></i> Semantic HTML5</div>
+                            <div class="skill-badge"><i class="fa-brands fa-css3-alt"></i> Modern CSS3 & Grid/Flexbox</div>
+                            <div class="skill-badge"><i class="fa-brands fa-js"></i> JavaScript (ES6+)</div>
+                            <div class="skill-badge"><i class="fa-solid fa-mobile-screen"></i> Responsive Architecture</div>
+                            <div class="skill-badge"><i class="fa-solid fa-moon"></i> Dark / Light Mode Systems</div>
+                        </div>
+                    </div>
+
+                    <!-- Software & Logic Card -->
+                    <div class="skill-category-card" data-tilt>
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-brands fa-java"></i></div>
+                            <div>
+                                <h3>Software & Algorithms</h3>
+                                <p>Object-oriented logic & data structures</p>
+                            </div>
+                        </div>
+
+                        <div class="skill-items">
+                            <div class="skill-badge"><i class="fa-brands fa-java"></i> Java (JDK 25)</div>
+                            <div class="skill-badge"><i class="fa-solid fa-cubes"></i> Object-Oriented Programming (OOP)</div>
+                            <div class="skill-badge"><i class="fa-solid fa-diagram-project"></i> Data Structures & Algorithms</div>
+                            <div class="skill-badge"><i class="fa-solid fa-code-branch"></i> VS Code & WSL Linux</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Featured Works</span>
+                    <h2 class="section-title">Web & Interactive <span class="gradient-text">Projects</span></h2>
+                    <p class="section-subtitle">Real-world academic applications, interactive prototypes, and web software.</p>
+                </div>
+
+                <!-- Project Filters -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="uiux">UI/UX & HCI</button>
+                    <button class="filter-btn" data-filter="software">Java & Algorithms</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: AuraPulse -->
+                    <article class="project-card" data-category="uiux" data-tilt>
+                        <div class="project-thumb-wrapper">
+                            <div class="project-visual-banner aurapulse-banner">
+                                <div class="ring-preview-pill">
+                                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                    <span>3D Interactive Prototype</span>
+                                </div>
+                            </div>
+                            <div class="project-overlay-links">
+                                <a href="#projects" class="overlay-link-btn" title="View details"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">UI/UX Design</span>
+                                <span class="tag">HCI</span>
+                                <span class="tag">3D GLB</span>
+                            </div>
+                            <h3 class="project-title">AuraPulse — Interactive Smart Health Ring</h3>
+                            <p class="project-desc">
+                                A high-fidelity interactive product showcase and 3D defense presentation for an ergonomic smart ring featuring PPG optical sensors, real-time biometrics, and dynamic Morph transitions.
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-tech-meta"><i class="fa-solid fa-layer-group"></i> Figma • 3D GLB • HCI</span>
+                                <a href="#projects" class="project-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Recipe Site -->
+                    <article class="project-card" data-category="web" data-tilt>
+                        <div class="project-thumb-wrapper">
+                            <img src="assets/images/recipe-project.jpg" alt="Filipino Recipe Hub Project" class="project-thumb" width="600" height="400" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-overlay-links">
+                                <a href="../recipe-site/index.html" target="_blank" class="overlay-link-btn" title="Open Recipe Site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">Responsive</span>
+                            </div>
+                            <h3 class="project-title">Traditional Filipino Recipe Hub</h3>
+                            <p class="project-desc">
+                                A clean, responsive culinary guide highlighting classic Filipino delicacies like Adobo with ingredient checklists, structured preparation steps, and mobile-friendly navigation.
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-tech-meta"><i class="fa-solid fa-layer-group"></i> HTML • CSS • Web Layout</span>
+                                <a href="../recipe-site/index.html" target="_blank" class="project-link">View Site <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Portfolio Website Project - JP -->
+                    <article class="project-card" data-category="web" data-tilt>
+                        <div class="project-thumb-wrapper">
+                            <div class="project-visual-banner portfolio-banner">
+                                <div class="code-preview-pill">
+                                    <i class="fa-solid fa-code"></i>
+                                    <span>&lt;Portfolio Website Project - JP /&gt;</span>
+                                </div>
+                            </div>
+                            <div class="project-overlay-links">
+                                <a href="#hero" class="overlay-link-btn" title="Current Website"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <h3 class="project-title">Portfolio Website Project - JP</h3>
+                            <p class="project-desc">
+                                Personal portfolio platform engineered with modern semantic HTML5, Bento Grid layouts, custom hover-to-play video showcase, dark/light theme switching, and responsive design.
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-tech-meta"><i class="fa-solid fa-layer-group"></i> Vanilla JS • Bento Grid • Responsive</span>
+                                <a href="#hero" class="project-link">Live View <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Java Algorithmic Suite -->
+                    <article class="project-card" data-category="software" data-tilt>
+                        <div class="project-thumb-wrapper">
+                            <div class="project-visual-banner java-banner">
+                                <div class="java-preview-pill">
+                                    <i class="fa-brands fa-java"></i>
+                                    <span>Java OOP & Algorithms</span>
+                                </div>
+                            </div>
+                            <div class="project-overlay-links">
+                                <a href="#projects" class="overlay-link-btn" title="View Java Programs"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">OOP</span>
+                                <span class="tag">Data Structures</span>
+                            </div>
+                            <h3 class="project-title">Data Structures & Java Console Suite</h3>
+                            <p class="project-desc">
+                                A suite of academic Java programs implementing object-oriented programming, array manipulation, search/sort routines, and algorithmic problem-solving for BSIT coursework.
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-tech-meta"><i class="fa-solid fa-layer-group"></i> JDK 25 • Logic • Data Structures</span>
+                                <a href="#projects" class="project-link">View Repo <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Journey & Milestones Timeline Section -->
+        <section class="section timeline-section" id="timeline">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Milestones</span>
+                    <h2 class="section-title">My Academic & <span class="gradient-text">Creative Journey</span></h2>
+                    <p class="section-subtitle">The progression of my skills from college entry to active BSIT 2nd year milestones.</p>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+
+                    <!-- Milestone 1: 1st Year BSIT -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><i class="fa-solid fa-seedling"></i></div>
+                        <div class="timeline-content" data-tilt>
+                            <span class="timeline-period">1st Year BSIT • SY 2025–2026</span>
+                            <h3 class="timeline-title">Foundations of Computing & Logic</h3>
+                            <p class="timeline-desc">
+                                Mastered computer science fundamentals, algorithmic logic, computer hardware principles, and basic web structures. Discovered passion for motion design and video editing.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="course-chip">Intro to Computing</span>
+                                <span class="course-chip">Programming Logic</span>
+                                <span class="course-chip">Motion Graphics Practice</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2: Active 2nd Year BSIT -->
+                    <div class="timeline-item current-milestone">
+                        <div class="timeline-marker pulse-marker"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="timeline-content" data-tilt>
+                            <div class="timeline-status-badge">CURRENTLY ACTIVE • 2G</div>
+                            <span class="timeline-period">2nd Year BSIT (1st Sem, SY 2026–2027)</span>
+                            <h3 class="timeline-title">Data Structures, HCI & Full-Stack Prototyping</h3>
+                            <p class="timeline-desc">
+                                Enrolled in 23 units. Developing deep competencies in Data Structures & Algorithms (Java), Human-Computer Interaction, Platform Technologies, and building interactive web experiences.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="course-chip">COSC1003 Data Structures</span>
+                                <span class="course-chip">COSC1007 HCI</span>
+                                <span class="course-chip">COSC1008 Platform Tech</span>
+                                <span class="course-chip">Portfolio Website Project</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3: Future Roadmap -->
+                    <div class="timeline-item future-milestone">
+                        <div class="timeline-marker"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="timeline-content" data-tilt>
+                            <span class="timeline-period">Next Horizons • 2027 & Beyond</span>
+                            <h3 class="timeline-title">Full-Stack Engineering & Capstone Innovations</h3>
+                            <p class="timeline-desc">
+                                Expanding into modern frameworks (React, Node.js), cloud deployment architecture, comprehensive mobile app development, and high-impact BSIT capstone engineering.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="course-chip">Full-Stack Frameworks</span>
+                                <span class="course-chip">Cloud & DevOps</span>
+                                <span class="course-chip">Industry Internship</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Creative Hobbies Section -->
+        <section class="section extras-section" id="extras">
+            <div class="container">
+                <div class="extras-grid">
+                    <!-- Certifications Panel -->
+                    <div class="extras-panel">
+                        <div class="panel-header">
+                            <div class="panel-icon"><i class="fa-solid fa-award"></i></div>
+                            <div>
+                                <h3 class="panel-title">Academic & Technical Honors</h3>
+                                <p class="panel-subtitle">Key credentials and institutional coursework</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-cards">
+                            <div class="cert-card" data-tilt>
+                                <div class="cert-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <div>
+                                    <h4 class="cert-name">BSIT 2nd Year Academic Standing</h4>
+                                    <p class="cert-issuer">STI West Negros University • BSIT 2G</p>
+                                    <span class="cert-date">23 Academic Units Ongoing</span>
+                                </div>
+                            </div>
+
+                            <div class="cert-card" data-tilt>
+                                <div class="cert-icon"><i class="fa-brands fa-figma"></i></div>
+                                <div>
+                                    <h4 class="cert-name">UI/UX Prototyping & Design Systems</h4>
+                                    <p class="cert-issuer">Figma Community & Student Verification</p>
+                                    <span class="cert-date">Interactive Component Prototyping</span>
+                                </div>
+                            </div>
+
+                            <div class="cert-card" data-tilt>
+                                <div class="cert-icon"><i class="fa-solid fa-code"></i></div>
+                                <div>
+                                    <h4 class="cert-name">Responsive Web Development & Semantic UI</h4>
+                                    <p class="cert-issuer">Independent Web Engineering & Practice</p>
+                                    <span class="cert-date">HTML5, CSS3, ES6+ JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Hobbies & Passions Panel -->
+                    <div class="extras-panel">
+                        <div class="panel-header">
+                            <div class="panel-icon"><i class="fa-solid fa-heart"></i></div>
+                            <div>
+                                <h3 class="panel-title">Creative Hobbies & Passions</h3>
+                                <p class="panel-subtitle">What drives my creativity outside the classroom</p>
+                            </div>
+                        </div>
+
+                        <div class="hobbies-grid">
+                            <div class="hobby-item" data-tilt>
+                                <div class="hobby-icon"><i class="fa-solid fa-video"></i></div>
+                                <h4>Motion Graphics</h4>
+                                <p>Experimenting with keyframes, speed ramps, and rhythmic video editing.</p>
+                            </div>
+
+                            <div class="hobby-item" data-tilt>
+                                <div class="hobby-icon"><i class="fa-solid fa-palette"></i></div>
+                                <h4>Figma UI Prototyping</h4>
+                                <p>Designing mobile app interfaces, dark mode dashboards, and sleek wireframes.</p>
+                            </div>
+
+                            <div class="hobby-item" data-tilt>
+                                <div class="hobby-icon"><i class="fa-solid fa-robot"></i></div>
+                                <h4>AI Workflow Automation</h4>
+                                <p>Leveraging autonomous AI pair-programming to build faster and smarter.</p>
+                            </div>
+
+                            <div class="hobby-item" data-tilt>
+                                <div class="hobby-icon"><i class="fa-solid fa-gamepad"></i></div>
+                                <h4>Anime & Gaming</h4>
+                                <p>Drawing inspiration from epic story arcs and charismatic characters (Gojo!).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Let's Connect</span>
+                    <h2 class="section-title">Get in Touch & <span class="gradient-text">Collaborate</span></h2>
+                    <p class="section-subtitle">Have a motion design project, web inquiry, or academic collaboration in mind? Reach out!</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Information Cards -->
+                    <div class="contact-info-panel">
+                        <h3 class="contact-panel-title">Contact Channels</h3>
+                        <p class="contact-panel-desc">
+                            Reach out through any channel below — I'm always open to discussing new ideas, web development, or creative video projects.
+                        </p>
+
+                        <div class="contact-card" data-tilt>
+                            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Personal Email</span>
+                                <a href="mailto:jhonpaulosolsona12@gmail.com" class="contact-card-value">jhonpaulosolsona12@gmail.com</a>
+                            </div>
+                            <button class="copy-email-btn" data-email="jhonpaulosolsona12@gmail.com" title="Copy email address">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-card" data-tilt>
+                            <div class="contact-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Institutional Student Email</span>
+                                <a href="mailto:gascon.820357@wnu.sti.edu.ph" class="contact-card-value">gascon.820357@wnu.sti.edu.ph</a>
+                            </div>
+                            <button class="copy-email-btn" data-email="gascon.820357@wnu.sti.edu.ph" title="Copy email address">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-card" data-tilt>
+                            <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Current Location</span>
+                                <p class="contact-card-value">Bacolod City, Negros Occidental, Philippines</p>
+                            </div>
+                        </div>
+
+                        <!-- Direct Resume Card -->
+                        <div class="contact-resume-card" data-tilt>
+                            <div class="resume-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                            <div>
+                                <h4>Download Complete CV / Resume</h4>
+                                <p>Get a comprehensive view of my technical skills, coursework, and project background.</p>
+                            </div>
+                            <a href="assets/resume.pdf" class="btn btn-primary btn-sm" download="Jhon_Paulo_Gascon_Resume.pdf">
+                                <i class="fa-solid fa-download"></i> Download Resume
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Project Configurator Panel -->
+                    <div class="configurator-panel" data-tilt>
+                        <div class="configurator-header">
+                            <div class="configurator-badge">
+                                <span class="status-pulse-dot"></span>
+                                <span>Open for Collabs & Projects</span>
+                            </div>
+                            <h3 class="configurator-title">Interactive Project Configurator</h3>
+                            <p class="configurator-subtitle">
+                                Tap your requirements below to build a tailored collaboration brief. It automatically crafts a ready-to-send draft for you!
+                            </p>
+                        </div>
+
+                        <!-- Step 1: Service Type -->
+                        <div class="config-step">
+                            <label class="config-step-label">
+                                <span class="step-num">01</span>
+                                <span>Select Service or Focus:</span>
+                            </label>
+                            <div class="config-options-grid" id="serviceOptions">
+                                <button type="button" class="config-chip active" data-value="UI/UX Design & Prototype (Figma)">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                    <span>UI/UX Design</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Motion Graphics & Video Editing">
+                                    <i class="fa-solid fa-film"></i>
+                                    <span>Motion / Video Editing</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Frontend Web Development">
+                                    <i class="fa-solid fa-code"></i>
+                                    <span>Web Development</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Academic Collab / Research">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                    <span>Academic Collab</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="General Inquiry / Say Hello">
+                                    <i class="fa-solid fa-mug-hot"></i>
+                                    <span>Say Hello / Chat</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Timeline -->
+                        <div class="config-step">
+                            <label class="config-step-label">
+                                <span class="step-num">02</span>
+                                <span>Estimated Timeline:</span>
+                            </label>
+                            <div class="config-options-grid" id="timelineOptions">
+                                <button type="button" class="config-chip active" data-value="1–2 Weeks">
+                                    <i class="fa-solid fa-bolt"></i>
+                                    <span>1–2 Weeks</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Within 1 Month">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>Within 1 Month</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Urgent / ASAP">
+                                    <i class="fa-solid fa-fire"></i>
+                                    <span>Urgent / ASAP</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Flexible Timeline">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Flexible</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Project Context -->
+                        <div class="config-step">
+                            <label class="config-step-label">
+                                <span class="step-num">03</span>
+                                <span>Project Context:</span>
+                            </label>
+                            <div class="config-options-grid" id="contextOptions">
+                                <button type="button" class="config-chip active" data-value="Freelance / Client Project">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                    <span>Freelance / Client</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Student / Academic Capstone">
+                                    <i class="fa-solid fa-book-open"></i>
+                                    <span>Student Project</span>
+                                </button>
+                                <button type="button" class="config-chip" data-value="Campus / Organization Work">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>School Org</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Optional Short Note -->
+                        <div class="config-step">
+                            <label for="configNote" class="config-step-label">
+                                <span class="step-num">04</span>
+                                <span>Quick note or project overview (optional):</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <i class="fa-regular fa-comment-dots input-icon"></i>
+                                <input type="text" id="configNote" class="form-input config-note-input" placeholder="e.g. Need a Figma prototype for our capstone app...">
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Summary Box -->
+                        <div class="config-summary-box">
+                            <div class="summary-top">
+                                <span class="summary-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Generated Brief</span>
+                                <span class="summary-recipient">Recipient: jhonpaulosolsona12@gmail.com</span>
+                            </div>
+                            <div class="summary-preview-body" id="summaryPreview">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="config-actions">
+                            <a href="#" id="launchGmailBtn" class="btn btn-primary btn-block config-launch-btn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Launch in Gmail / Email App</span>
+                            </a>
+                            <button type="button" id="copyInquiryBtn" class="btn btn-outline btn-block config-copy-btn">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>Copy Inquiry Brief</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#hero" class="nav-brand">
+                    <span class="brand-first">Jhon&nbsp;Paulo</span> <span class="brand-last">Gascon</span>
+                </a>
+                <p class="footer-tagline">
+                    Blending motion, human-computer interaction, and clean code to craft memorable digital experiences.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#videos">Videos</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-socials">
+                <a href="mailto:jhonpaulosolsona12@gmail.com" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Jhon Paulo V. Gascon. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Form Submission & Copy Actions -->
+    <div class="toast-notification" id="toastNotification" role="alert" aria-live="polite">
+        <div class="toast-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="toast-content">
+            <h4 class="toast-title" id="toastTitle">Message Sent!</h4>
+            <p class="toast-message" id="toastMessage">Thank you, JP has received your message!</p>
+        </div>
+    </div>
+
+    <!-- Floating Theme Switcher Button (Always accessible anywhere on the page) -->
+    <button class="floating-theme-switch" id="floatingThemeToggle" aria-label="Toggle theme" title="Toggle Theme (Dark / Light Mode)">
+        <i class="fa-solid fa-moon moon-icon"></i>
+        <i class="fa-solid fa-sun sun-icon"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Scroll to top" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
