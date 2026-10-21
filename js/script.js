@@ -831,8 +831,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -------------------------------------------------------------------------
-    // 10. Copy Email to Clipboard
+    // 10. Clickable Contact Cards & Copy Email to Clipboard
     // -------------------------------------------------------------------------
+    const contactCards = document.querySelectorAll('.contact-card');
+    contactCards.forEach(card => {
+        // If it's already an <a> link, browser handles it natively
+        if (card.tagName.toLowerCase() === 'a') return;
+
+        card.addEventListener('click', (e) => {
+            // Do not trigger email action if clicking the copy button
+            if (e.target.closest('.copy-email-btn')) return;
+
+            const link = card.querySelector('a.contact-card-value') || card.querySelector('a');
+            if (link) {
+                window.location.href = link.href;
+            }
+        });
+    });
+
     const copyEmailBtns = document.querySelectorAll('.copy-email-btn');
 
     copyEmailBtns.forEach(btn => {

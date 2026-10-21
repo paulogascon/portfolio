@@ -1986,11 +1986,42 @@ body {
     border-radius: var(--radius-md);
     transition: var(--transition);
     position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
 }
 
 .contact-card:hover {
     border-color: var(--border-hover);
     transform: translateX(4px);
+    background: var(--bg-card-hover);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.contact-card:hover .contact-card-value {
+    color: var(--accent);
+}
+
+.contact-card-action {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.contact-card:hover .contact-card-action {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(0, 229, 255, 0.08);
+    transform: translate(2px, -2px);
 }
 
 .contact-card-icon {
