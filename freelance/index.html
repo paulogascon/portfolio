@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Showcase — Professional Academic Documents | Jhon Paulo Gascon</title>
+    <meta name="description" content="Explore and download professional academic and corporate document samples crafted by Jhon Paulo Gascon — BSIT Student at STI West Negros University. High-impact Word papers, studio PDFs, and widescreen presentation decks.">
+    <meta name="author" content="Jhon Paulo V. Gascon">
+    <meta name="theme-color" content="#070a13">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paulogascon.github.io/portfolio/freelance/">
+    <meta property="og:title" content="Freelance Document Showcase — Jhon Paulo Gascon">
+    <meta property="og:description" content="Explore 15 professional samples of Word research reports, studio-grade PDFs, and executive PowerPoint decks tailored for students and academia.">
+    <meta property="og:image" content="assets/banner.webp">
+
+    <!-- Fonts & CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Base Portfolio CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Freelance Showcase Specific CSS -->
+    <link rel="stylesheet" href="css/freelance.css">
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
+</head>
+<body>
+    <!-- Background Ambient Glow Orbs -->
+    <div class="glow-orb orb-1" aria-hidden="true"></div>
+    <div class="glow-orb orb-2" aria-hidden="true"></div>
+    <div class="glow-orb orb-3" aria-hidden="true"></div>
+    <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">
+                <span class="brand-first">Jhon&nbsp;Paulo</span> <span class="brand-last">Gascon</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="../index.html#hero" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a></li>
+                    <li><a href="#samples" class="nav-link active">Showcase Samples</a></li>
+                    <li><a href="#contact" class="nav-link">Work With Me</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+                    <i class="fa-solid fa-moon moon-icon"></i>
+                    <i class="fa-solid fa-sun sun-icon"></i>
+                </button>
+
+                <!-- Back to Portfolio Link Button -->
+                <a href="../index.html" class="btn btn-outline btn-sm nav-resume-btn">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open mobile menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Showcase Hero Section with 3D Futuristic Banner -->
+        <section class="fs-hero-section" id="samples">
+            <div class="container">
+                
+                <!-- 3D Futuristic Top Banner -->
+                <div class="fs-banner-container">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="assets/banner-mobile.webp">
+                        <img src="assets/banner.webp" alt="Freelance Showcase — Professional Word, PDF, and PowerPoint documents for students by Jhon Paulo Gascon" class="fs-banner-img" width="1920" height="600" fetchpriority="high">
+                    </picture>
+                    <div class="fs-banner-overlay"></div>
+                </div>
+
+                <!-- Intro Block -->
+                <div class="fs-intro-block">
+                    <div class="fs-badge">
+                        <i class="fa-solid fa-award"></i> Verified Academic Production
+                    </div>
+                    <h1 class="fs-intro-title">Freelance <span class="gradient-text">Document Showcase</span></h1>
+                    <p class="fs-intro-text">
+                        A curated catalog of 15 studio-grade academic papers, legal case studies, comprehensive study guides, and executive presentation decks. Each sample is engineered with verified academic citations, structured formatting, and bespoke visual themes for collegiate excellence.
+                    </p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="fs-tabs-wrapper" role="tablist" aria-label="Filter documents by file type">
+                    <button class="fs-tab-btn active" data-filter="all" role="tab" aria-selected="true">
+                        <i class="fa-solid fa-layer-group"></i> All Works <span class="fs-tab-count">15</span>
+                    </button>
+                    <button class="fs-tab-btn" data-filter="docx" role="tab" aria-selected="false">
+                        <i class="fa-solid fa-file-word" style="color: #00a2ff;"></i> Word Documents <span class="fs-tab-count">5</span>
+                    </button>
+                    <button class="fs-tab-btn" data-filter="pdf" role="tab" aria-selected="false">
+                        <i class="fa-solid fa-file-pdf" style="color: #f43f5e;"></i> PDF Files <span class="fs-tab-count">5</span>
+                    </button>
+                    <button class="fs-tab-btn" data-filter="pptx" role="tab" aria-selected="false">
+                        <i class="fa-solid fa-file-powerpoint" style="color: #fb923c;"></i> PowerPoint <span class="fs-tab-count">5</span>
+                    </button>
+                </div>
+
+                <!-- 15 Showcase Cards Grid -->
+                <div class="fs-cards-grid">
+
+                    <!-- ==================== 5 WORD (.DOCX) SAMPLES ==================== -->
+
+                    <!-- Word Sample 1 -->
+                    <article class="fs-card" data-category="docx"
+                             data-title="Research Paper: Effects of Social Media Use on Study Habits"
+                             data-preview="previews/docx_sample_1_social_media.png"
+                             data-download="samples/docx/Research_Paper_Social_Media_Study_Habits.docx"
+                             data-pdf="samples/docx/Research_Paper_Social_Media_Study_Habits.pdf"
+                             data-filename="Research_Paper_Social_Media_Study_Habits.docx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/docx_sample_1_social_media.png" alt="Preview of Social Media Study Habits Research Paper" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-docx"><i class="fa-solid fa-file-word"></i> Word (.docx)</span>
+                            <span class="fs-page-badge">4 Pages • APA 7th</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Academic Research</span>
+                            <h3 class="fs-card-title">Effects of Social Media Use on Study Habits of College Students</h3>
+                            <p class="fs-card-desc">Empirical quantitative study investigating screen time and scholastic focus, featuring methodology, comparative tables, and full APA 7th reference registers.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/docx/Research_Paper_Social_Media_Study_Habits.docx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Word Sample 2 -->
+                    <article class="fs-card" data-category="docx"
+                             data-title="Case Study Report: Cybercrime Prevention Act (RA 10175)"
+                             data-preview="previews/docx_sample_2_cybercrime.png"
+                             data-download="samples/docx/Case_Study_Report_RA_10175_Cybercrime.docx"
+                             data-pdf="samples/docx/Case_Study_Report_RA_10175_Cybercrime.pdf"
+                             data-filename="Case_Study_Report_RA_10175_Cybercrime.docx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/docx_sample_2_cybercrime.png" alt="Preview of Cybercrime Prevention Act Report" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-docx"><i class="fa-solid fa-file-word"></i> Word (.docx)</span>
+                            <span class="fs-page-badge">4 Pages • Case Study</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Philippine Legal & Cybercrime</span>
+                            <h3 class="fs-card-title">Cybercrime Prevention Act of 2012 (RA 10175) & Online Safety</h3>
+                            <p class="fs-card-desc">Comprehensive legal brief analyzing statutory provisions under RA 10175, data privacy liabilities, cyber libel jurisprudence, and digital safety frameworks.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/docx/Case_Study_Report_RA_10175_Cybercrime.docx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Word Sample 3 -->
+                    <article class="fs-card" data-category="docx"
+                             data-title="Business Plan: Campus Coffee Cart for STI West Negros University"
+                             data-preview="previews/docx_sample_3_coffee_cart.png"
+                             data-download="samples/docx/Business_Plan_Campus_Coffee_Cart.docx"
+                             data-pdf="samples/docx/Business_Plan_Campus_Coffee_Cart.pdf"
+                             data-filename="Business_Plan_Campus_Coffee_Cart.docx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/docx_sample_3_coffee_cart.png" alt="Preview of Campus Coffee Cart Business Plan" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-docx"><i class="fa-solid fa-file-word"></i> Word (.docx)</span>
+                            <span class="fs-page-badge">4 Pages • Feasibility</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Business & Entrepreneurship</span>
+                            <h3 class="fs-card-title">Campus Coffee Cart for STI West Negros University</h3>
+                            <p class="fs-card-desc">Commercial feasibility study detailing target demographics, break-even unit economics, 12-month financial projections, and localized competitive strategy.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/docx/Business_Plan_Campus_Coffee_Cart.docx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Word Sample 4 -->
+                    <article class="fs-card" data-category="docx"
+                             data-title="Thesis Chapters 1 to 3: Mobile Attendance Monitoring App"
+                             data-preview="previews/docx_sample_4_thesis_app.png"
+                             data-download="samples/docx/Thesis_Chapters_1_to_3_Mobile_Attendance_App.docx"
+                             data-pdf="samples/docx/Thesis_Chapters_1_to_3_Mobile_Attendance_App.pdf"
+                             data-filename="Thesis_Chapters_1_to_3_Mobile_Attendance_App.docx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/docx_sample_4_thesis_app.png" alt="Preview of Mobile Attendance App Thesis Proposal" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-docx"><i class="fa-solid fa-file-word"></i> Word (.docx)</span>
+                            <span class="fs-page-badge">4 Pages • IT Capstone</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">BSIT Capstone Research</span>
+                            <h3 class="fs-card-title">Mobile Attendance Monitoring App for College Students</h3>
+                            <p class="fs-card-desc">Formal undergraduate thesis proposal containing problem rationale, theoretical foundation, scope delimitations, and agile software development lifecycle.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/docx/Thesis_Chapters_1_to_3_Mobile_Attendance_App.docx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Word Sample 5 -->
+                    <article class="fs-card" data-category="docx"
+                             data-title="Internship Narrative Report: BSIT Industry Practicum"
+                             data-preview="previews/docx_sample_5_internship.png"
+                             data-download="samples/docx/Internship_Narrative_Report_BSIT.docx"
+                             data-pdf="samples/docx/Internship_Narrative_Report_BSIT.pdf"
+                             data-filename="Internship_Narrative_Report_BSIT.docx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/docx_sample_5_internship.png" alt="Preview of Internship Narrative Report" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-docx"><i class="fa-solid fa-file-word"></i> Word (.docx)</span>
+                            <span class="fs-page-badge">4 Pages • Practicum</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Industry Practicum</span>
+                            <h3 class="fs-card-title">BSIT Internship Narrative Report & Technical Practicum</h3>
+                            <p class="fs-card-desc">Structured experiential report documenting industry IT contributions, full-stack workflow integrations, challenges encountered, and career takeaways.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/docx/Internship_Narrative_Report_BSIT.docx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- ==================== 5 PDF SAMPLES ==================== -->
+
+                    <!-- PDF Sample 1 -->
+                    <article class="fs-card" data-category="pdf"
+                             data-title="Study Guide: Time Management & Study Habits for College Students"
+                             data-preview="previews/pdf_Study_Guide_Time_Management.png"
+                             data-download="samples/pdf/Study_Guide_Time_Management.pdf"
+                             data-pdf="samples/pdf/Study_Guide_Time_Management.pdf"
+                             data-filename="Study_Guide_Time_Management.pdf">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pdf_Study_Guide_Time_Management.png" alt="Preview of Time Management Study Guide" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pdf"><i class="fa-solid fa-file-pdf"></i> PDF Document</span>
+                            <span class="fs-page-badge">5 Pages • Study Guide</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Academic Productivity</span>
+                            <h3 class="fs-card-title">Time Management & Study Habits for College Students</h3>
+                            <p class="fs-card-desc">Practical handbook outlining the Pomodoro technique, Eisenhower decision quadrant, spaced repetition models, and 5 self-check review questions.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pdf/Study_Guide_Time_Management.pdf" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PDF Sample 2 -->
+                    <article class="fs-card" data-category="pdf"
+                             data-title="Cybersecurity Awareness Guide for Students"
+                             data-preview="previews/pdf_Cybersecurity_Awareness_Guide.png"
+                             data-download="samples/pdf/Cybersecurity_Awareness_Guide.pdf"
+                             data-pdf="samples/pdf/Cybersecurity_Awareness_Guide.pdf"
+                             data-filename="Cybersecurity_Awareness_Guide.pdf">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pdf_Cybersecurity_Awareness_Guide.png" alt="Preview of Cybersecurity Awareness Guide" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pdf"><i class="fa-solid fa-file-pdf"></i> PDF Document</span>
+                            <span class="fs-page-badge">5 Pages • Security</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Information Security</span>
+                            <h3 class="fs-card-title">Cybersecurity Awareness Guide for Students</h3>
+                            <p class="fs-card-desc">Essential student handbook detailing phishing recognition heuristics, password entropy best practices, multi-factor authentication, and Wi-Fi safety.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pdf/Cybersecurity_Awareness_Guide.pdf" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PDF Sample 3 -->
+                    <article class="fs-card" data-category="pdf"
+                             data-title="Know Your Rights: A Simple Guide to the Philippine Bill of Rights"
+                             data-preview="previews/pdf_Know_Your_Rights_Philippine_Bill_of_Rights.png"
+                             data-download="samples/pdf/Know_Your_Rights_Philippine_Bill_of_Rights.pdf"
+                             data-pdf="samples/pdf/Know_Your_Rights_Philippine_Bill_of_Rights.pdf"
+                             data-filename="Know_Your_Rights_Philippine_Bill_of_Rights.pdf">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pdf_Know_Your_Rights_Philippine_Bill_of_Rights.png" alt="Preview of Philippine Bill of Rights Guide" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pdf"><i class="fa-solid fa-file-pdf"></i> PDF Document</span>
+                            <span class="fs-page-badge">5 Pages • Constitutional Law</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Philippine Governance & Law</span>
+                            <h3 class="fs-card-title">Know Your Rights: Guide to the Philippine Bill of Rights</h3>
+                            <p class="fs-card-desc">Constitutional guide explaining 1987 Constitution Article III guarantees, lawful arrest protocols, Miranda rights, search warrant exceptions, and student protections.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pdf/Know_Your_Rights_Philippine_Bill_of_Rights.pdf" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PDF Sample 4 -->
+                    <article class="fs-card" data-category="pdf"
+                             data-title="Infographic Report: Mental Health & Stress Among College Students"
+                             data-preview="previews/pdf_Infographic_Report_Mental_Health_Stress.png"
+                             data-download="samples/pdf/Infographic_Report_Mental_Health_Stress.pdf"
+                             data-pdf="samples/pdf/Infographic_Report_Mental_Health_Stress.pdf"
+                             data-filename="Infographic_Report_Mental_Health_Stress.pdf">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pdf_Infographic_Report_Mental_Health_Stress.png" alt="Preview of Mental Health & Stress Report" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pdf"><i class="fa-solid fa-file-pdf"></i> PDF Document</span>
+                            <span class="fs-page-badge">5 Pages • Health Research</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Student Health & Wellness</span>
+                            <h3 class="fs-card-title">Mental Health & Stress Among College Students</h3>
+                            <p class="fs-card-desc">Formatted analytical report summarizing collegiate stress statistics, coping strategies, stigma mitigation, and crisis hotline resources.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pdf/Infographic_Report_Mental_Health_Stress.pdf" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PDF Sample 5 -->
+                    <article class="fs-card" data-category="pdf"
+                             data-title="Professional Digital Resume and Portfolio Booklet"
+                             data-preview="previews/pdf_Digital_Resume_Portfolio_Booklet.png"
+                             data-download="samples/pdf/Digital_Resume_Portfolio_Booklet.pdf"
+                             data-pdf="samples/pdf/Digital_Resume_Portfolio_Booklet.pdf"
+                             data-filename="Digital_Resume_Portfolio_Booklet.pdf">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pdf_Digital_Resume_Portfolio_Booklet.png" alt="Preview of Digital Resume & Portfolio Booklet" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pdf"><i class="fa-solid fa-file-pdf"></i> PDF Document</span>
+                            <span class="fs-page-badge">5 Pages • Executive CV</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Career Portfolio</span>
+                            <h3 class="fs-card-title">Professional Digital Resume & Portfolio Booklet</h3>
+                            <p class="fs-card-desc">Executive portfolio booklet detailing full technical skill matrices, completed software builds, graphic design competencies, and career objectives.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pdf/Digital_Resume_Portfolio_Booklet.pdf" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- ==================== 5 POWERPOINT (.PPTX) SAMPLES ==================== -->
+
+                    <!-- PPTX Sample 1 -->
+                    <article class="fs-card" data-category="pptx"
+                             data-title="Artificial Intelligence in Education: Opportunities and Risks"
+                             data-preview="previews/pptx_sample_1_ai_education.png"
+                             data-download="samples/pptx/AI_in_Education_Opportunities_Risks.pptx"
+                             data-pdf=""
+                             data-filename="AI_in_Education_Opportunities_Risks.pptx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pptx_sample_1_ai_education.png" alt="Preview of AI in Education Slide Deck" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pptx"><i class="fa-solid fa-file-powerpoint"></i> PPTX Deck</span>
+                            <span class="fs-page-badge">11 Slides • 16:9 Widescreen</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Educational Technology</span>
+                            <h3 class="fs-card-title">AI in Education: Opportunities & Risks</h3>
+                            <p class="fs-card-desc">Widescreen lecture presentation covering intelligent tutoring engines, algorithmic bias, academic integrity policies, and native slide transitions.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pptx/AI_in_Education_Opportunities_Risks.pptx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PPTX Sample 2 -->
+                    <article class="fs-card" data-category="pptx"
+                             data-title="The Life and Works of Jose Rizal"
+                             data-preview="previews/pptx_sample_2_rizal.png"
+                             data-download="samples/pptx/Life_and_Works_of_Jose_Rizal.pptx"
+                             data-pdf=""
+                             data-filename="Life_and_Works_of_Jose_Rizal.pptx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pptx_sample_2_rizal.png" alt="Preview of Jose Rizal Life and Works Slide Deck" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pptx"><i class="fa-solid fa-file-powerpoint"></i> PPTX Deck</span>
+                            <span class="fs-page-badge">11 Slides • 16:9 Widescreen</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Philippine History</span>
+                            <h3 class="fs-card-title">The Life and Works of Jose Rizal</h3>
+                            <p class="fs-card-desc">Royal academic presentation examining Rizal's early childhood in Calamba, European writings, the Propaganda Movement, and national martyrdom.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pptx/Life_and_Works_of_Jose_Rizal.pptx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PPTX Sample 3 -->
+                    <article class="fs-card" data-category="pptx"
+                             data-title="Pitch Deck: Campus Marketplace App for Students"
+                             data-preview="previews/pptx_sample_3_marketplace.png"
+                             data-download="samples/pptx/Pitch_Deck_Campus_Marketplace_App.pptx"
+                             data-pdf=""
+                             data-filename="Pitch_Deck_Campus_Marketplace_App.pptx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pptx_sample_3_marketplace.png" alt="Preview of Campus Marketplace App Pitch Deck" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pptx"><i class="fa-solid fa-file-powerpoint"></i> PPTX Deck</span>
+                            <span class="fs-page-badge">11 Slides • 16:9 Widescreen</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Startup Pitch</span>
+                            <h3 class="fs-card-title">Campus Marketplace App: Investor Pitch Deck</h3>
+                            <p class="fs-card-desc">Dynamic venture pitch deck articulating student commerce friction, product solution, TAM/SAM sizing, unit economics, and go-to-market execution.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pptx/Pitch_Deck_Campus_Marketplace_App.pptx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PPTX Sample 4 -->
+                    <article class="fs-card" data-category="pptx"
+                             data-title="Crime Scene Investigation: Basics for Criminology Students"
+                             data-preview="previews/pptx_sample_4_csi.png"
+                             data-download="samples/pptx/Crime_Scene_Investigation_Basics.pptx"
+                             data-pdf=""
+                             data-filename="Crime_Scene_Investigation_Basics.pptx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pptx_sample_4_csi.png" alt="Preview of CSI Basics Slide Deck" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pptx"><i class="fa-solid fa-file-powerpoint"></i> PPTX Deck</span>
+                            <span class="fs-page-badge">11 Slides • 16:9 Widescreen</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Forensic Science & Criminology</span>
+                            <h3 class="fs-card-title">Crime Scene Investigation: Fundamentals</h3>
+                            <p class="fs-card-desc">Methodical forensic lecture examining Locard's exchange principle, physical evidence preservation, chain of custody logs, and court admissibility.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pptx/Crime_Scene_Investigation_Basics.pptx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- PPTX Sample 5 -->
+                    <article class="fs-card" data-category="pptx"
+                             data-title="Stress Management and Student Wellness"
+                             data-preview="previews/pptx_sample_5_wellness.png"
+                             data-download="samples/pptx/Stress_Management_Student_Wellness.pptx"
+                             data-pdf=""
+                             data-filename="Stress_Management_Student_Wellness.pptx">
+                        <div class="fs-card-thumb-wrap">
+                            <img src="previews/pptx_sample_5_wellness.png" alt="Preview of Stress Management & Wellness Slide Deck" class="fs-card-thumb" loading="lazy" width="400" height="250">
+                            <div class="fs-card-thumb-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> View Preview</div>
+                            <span class="fs-file-badge fs-badge-pptx"><i class="fa-solid fa-file-powerpoint"></i> PPTX Deck</span>
+                            <span class="fs-page-badge">11 Slides • 16:9 Widescreen</span>
+                        </div>
+                        <div class="fs-card-body">
+                            <span class="fs-card-category">Guidance & Counseling</span>
+                            <h3 class="fs-card-title">Stress Management & Student Wellness</h3>
+                            <p class="fs-card-desc">Engaging wellness deck providing cognitive reframing techniques, mindfulness routines, sleep hygiene guidelines, and institutional guidance contacts.</p>
+                            <div class="fs-card-actions">
+                                <button type="button" class="fs-btn-preview"><i class="fa-solid fa-eye"></i> Preview</button>
+                                <a href="samples/pptx/Stress_Management_Student_Wellness.pptx" class="fs-btn-download" download><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Work With Me Section -->
+        <section class="fs-contact-section" id="contact">
+            <div class="container">
+                <div class="fs-contact-box">
+                    <div class="fs-badge">
+                        <i class="fa-solid fa-handshake"></i> Open for Commissions
+                    </div>
+                    <h2 class="fs-intro-title">Ready to Collaborate on <span class="gradient-text">Your Next Project?</span></h2>
+                    <p class="fs-intro-text">
+                        Need an academic research paper, case study, study reviewer, or agency-grade PowerPoint deck? Reach out directly to collaborate on tailored, publication-ready deliverables.
+                    </p>
+
+                    <div class="fs-contact-grid">
+                        <!-- Personal Email Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Primary Personal Email</span>
+                                <a href="mailto:jhonpaulosolsona12@gmail.com" class="contact-card-value">jhonpaulosolsona12@gmail.com</a>
+                            </div>
+                            <button class="copy-email-btn" data-email="jhonpaulosolsona12@gmail.com" title="Copy email address" aria-label="Copy personal email">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <!-- Institutional Email Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Institutional Student Email</span>
+                                <a href="mailto:gascon.820357@wnu.sti.edu.ph" class="contact-card-value">gascon.820357@wnu.sti.edu.ph</a>
+                            </div>
+                            <button class="copy-email-btn" data-email="gascon.820357@wnu.sti.edu.ph" title="Copy email address" aria-label="Copy institutional email">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <!-- Location Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Current Base</span>
+                                <p class="contact-card-value">Bacolod City, Negros Occidental, Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="mailto:jhonpaulosolsona12@gmail.com?subject=Freelance%20Document%20Inquiry" class="btn btn-primary">
+                            <i class="fa-solid fa-paper-plane"></i> Send an Inquiry
+                        </a>
+                        <a href="../assets/resume.pdf" class="btn btn-outline" download="Jhon_Paulo_Gascon_Resume.pdf">
+                            <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+                        </a>
+                        <a href="../index.html" class="btn btn-secondary">
+                            <i class="fa-solid fa-arrow-left"></i> Return to Main Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="../index.html" class="nav-brand">
+                    <span class="brand-first">Jhon&nbsp;Paulo</span> <span class="brand-last">Gascon</span>
+                </a>
+                <p class="footer-tagline">2nd Year BSIT Student • UI/UX Designer • Document Specialist</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html#hero">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#videos">Videos</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="#samples">Showcase</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-socials">
+                <a href="mailto:jhonpaulosolsona12@gmail.com" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/paulogascon" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Jhon Paulo V. Gascon. STI West Negros University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Document Preview Modal -->
+    <div class="fs-modal" id="fsModal" role="dialog" aria-modal="true" aria-labelledby="fsModalTitle">
+        <div class="fs-modal-dialog">
+            <div class="fs-modal-header">
+                <h3 class="fs-modal-title" id="fsModalTitle">Document Preview</h3>
+                <button type="button" class="fs-modal-close" id="fsModalClose" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="fs-modal-body">
+                <img src="" alt="Document Preview" class="fs-modal-preview-img" id="fsModalImg">
+            </div>
+            <div class="fs-modal-footer">
+                <a href="#" class="btn btn-secondary btn-sm" id="fsModalViewPdf" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full View
+                </a>
+                <a href="#" class="btn btn-primary btn-sm" id="fsModalDownload" download>
+                    <i class="fa-solid fa-download"></i> Download File
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Theme Switcher Button -->
+    <button class="floating-theme-switch" id="floatingThemeToggle" aria-label="Toggle theme" title="Toggle Theme (Dark / Light Mode)">
+        <i class="fa-solid fa-moon moon-icon"></i>
+        <i class="fa-solid fa-sun sun-icon"></i>
+    </button>
+
+    <!-- Freelance Showcase Script -->
+    <script src="js/freelance.js"></script>
+</body>
+</html>

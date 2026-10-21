@@ -2729,3 +2729,58 @@ body {
         left: calc(50% - 95px);
     }
 }
+
+/* ==========================================================================
+   Freelance Showcase Feature Button (Part B)
+   ========================================================================== */
+.fs-showcase-btn {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.16) 0%, rgba(168, 85, 247, 0.22) 100%);
+    color: #ffffff !important;
+    border: 1.5px solid rgba(0, 229, 255, 0.6);
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.25), 0 0 24px rgba(168, 85, 247, 0.2);
+    animation: fs-pulse-glow 2.8s ease-in-out infinite alternate;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.fs-showcase-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.35) 0%, rgba(168, 85, 247, 0.42) 100%);
+    border-color: #00e5ff;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.65), 0 0 40px rgba(168, 85, 247, 0.45);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+}
+
+.fs-showcase-btn i {
+    color: #00e5ff;
+    transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.fs-showcase-btn:hover i {
+    transform: scale(1.15) rotate(-6deg);
+    color: #ffffff;
+}
+
+@keyframes fs-pulse-glow {
+    0% {
+        box-shadow: 0 0 12px rgba(0, 229, 255, 0.22), 0 0 18px rgba(168, 85, 247, 0.16);
+        border-color: rgba(0, 229, 255, 0.55);
+    }
+    100% {
+        box-shadow: 0 0 24px rgba(0, 229, 255, 0.55), 0 0 36px rgba(168, 85, 247, 0.45);
+        border-color: rgba(168, 85, 247, 0.9);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fs-showcase-btn {
+        animation: none !important;
+        box-shadow: 0 0 16px rgba(0, 229, 255, 0.35);
+    }
+    .fs-showcase-btn:hover {
+        transform: none !important;
+    }
+}

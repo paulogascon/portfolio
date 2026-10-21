@@ -1,0 +1,522 @@
+/* ==========================================================================
+   Freelance Showcase Stylesheet — Jhon Paulo V. Gascon Portfolio
+   Clean, Modern Cyber-Glassmorphism, High-Performance Document Showcase
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Showcase Hero & Banner Section
+   -------------------------------------------------------------------------- */
+.fs-hero-section {
+    padding-top: 100px;
+    padding-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.fs-banner-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2.5rem;
+    border-radius: var(--radius-lg, 20px);
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+}
+
+.fs-banner-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 5;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow, 0.5s ease);
+}
+
+@media (max-width: 768px) {
+    .fs-banner-img {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+.fs-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 10, 19, 0.2) 0%, rgba(7, 10, 19, 0.75) 100%);
+    pointer-events: none;
+}
+
+/* Intro Text Below Banner */
+.fs-intro-block {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 3rem;
+}
+
+.fs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 50px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fs-intro-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.fs-intro-text {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   2. Filter Navigation Tabs
+   -------------------------------------------------------------------------- */
+.fs-tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 80px;
+    z-index: 20;
+    padding: 0.6rem;
+    background: rgba(7, 10, 19, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fs-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.4rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal, 0.25s ease);
+}
+
+.fs-tab-btn i {
+    font-size: 0.95rem;
+    transition: transform var(--transition-fast, 0.15s ease);
+}
+
+.fs-tab-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.fs-tab-btn.active {
+    color: #ffffff;
+    background: var(--accent-gradient);
+    box-shadow: 0 4px 18px var(--accent-glow);
+}
+
+.fs-tab-btn .fs-tab-count {
+    font-size: 0.78rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   3. Showcase Cards Grid
+   -------------------------------------------------------------------------- */
+.fs-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 480px) {
+    .fs-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.fs-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 18px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.fs-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-hover);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px var(--accent-glow);
+}
+
+/* Card Thumbnail Area */
+.fs-card-thumb-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0d1322;
+    cursor: pointer;
+}
+
+.fs-card-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.fs-card:hover .fs-card-thumb {
+    transform: scale(1.04);
+}
+
+.fs-card-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 10, 19, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    gap: 0.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.fs-card-thumb-wrap:hover .fs-card-thumb-overlay {
+    opacity: 1;
+}
+
+/* File Type Tag */
+.fs-file-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    z-index: 2;
+}
+
+.fs-badge-docx {
+    background: rgba(27, 85, 155, 0.9);
+    color: #ffffff;
+    border: 1px solid rgba(0, 162, 255, 0.4);
+}
+
+.fs-badge-pdf {
+    background: rgba(185, 28, 28, 0.9);
+    color: #ffffff;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+.fs-badge-pptx {
+    background: rgba(194, 65, 12, 0.9);
+    color: #ffffff;
+    border: 1px solid rgba(251, 146, 60, 0.4);
+}
+
+.fs-page-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Card Body */
+.fs-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.fs-card-category {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.fs-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.fs-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Card Action Buttons */
+.fs-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+.fs-btn-preview {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 8px);
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast, 0.15s ease);
+}
+
+.fs-btn-preview:hover {
+    background: rgba(0, 229, 255, 0.12);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.fs-btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    background: var(--accent-gradient);
+    border: none;
+    border-radius: var(--radius-sm, 8px);
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast, 0.15s ease);
+    box-shadow: 0 2px 10px var(--accent-glow);
+}
+
+.fs-btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 229, 255, 0.5);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. Work With Me Section
+   -------------------------------------------------------------------------- */
+.fs-contact-section {
+    padding: 4rem 0 5rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(13, 19, 34, 0.65) 100%);
+    border-top: 1px solid var(--border);
+}
+
+.fs-contact-box {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 24px);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(14px);
+}
+
+@media (max-width: 768px) {
+    .fs-contact-box {
+        padding: 2rem 1.5rem;
+    }
+}
+
+.fs-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   5. Interactive Preview Modal
+   -------------------------------------------------------------------------- */
+.fs-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 8, 16, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1.5rem;
+}
+
+.fs-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fs-modal-dialog {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-lg, 20px);
+    width: 100%;
+    max-width: 950px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fs-modal.active .fs-modal-dialog {
+    transform: scale(1);
+}
+
+.fs-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.7);
+}
+
+.fs-modal-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.fs-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.35rem;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.fs-modal-close:hover {
+    color: var(--accent-rose);
+    background: rgba(244, 63, 94, 0.1);
+}
+
+.fs-modal-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.fs-modal-preview-img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.fs-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.25rem 1.75rem;
+    border-top: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   6. Accessibility & Motion Preferences
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .fs-card,
+    .fs-tab-btn,
+    .fs-banner-img,
+    .fs-modal,
+    .fs-modal-dialog {
+        transition: none !important;
+        transform: none !important;
+    }
+}
