@@ -120,6 +120,22 @@
         revealEls.forEach(function (el) { el.classList.add('is-visible'); });
     }
 
+    // Anchor jumps: show the target section at once so it never flashes blank.
+    function revealSection(hash) {
+        if (!hash || hash.length < 2) return;
+        var target = null;
+        try { target = doc.querySelector(hash); } catch (e) { return; }
+        if (!target) return;
+        if (target.hasAttribute('data-reveal')) target.classList.add('is-visible');
+        $all('[data-reveal]', target).forEach(function (el) { el.classList.add('is-visible'); });
+    }
+    doc.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (a) revealSection(a.getAttribute('href'));
+    });
+    window.addEventListener('hashchange', function () { revealSection(location.hash); });
+    revealSection(location.hash);
+
     /* ---------------------------------------------------------------------
        Feature 2: live PH / US-ET / UK clock
        --------------------------------------------------------------------- */
@@ -190,7 +206,7 @@
         var GRAVITY = 0.44;
         var DAMPING = reduced ? 0.9 : 0.965;
         var ANCHOR_Y = 6;
-        var CLIP_OFFSET = 22; // card top sits just below the strap end, under the clip ring
+        var CLIP_OFFSET = 20; // card top sits just below the strap end, under the clip ring
         var RIBBON_W = 26;
 
         var width = 0, height = 0, dpr = 1;
@@ -205,7 +221,7 @@
             canvas.width = Math.round(width * dpr);
             canvas.height = Math.round(height * dpr);
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            STRAP_LENGTH = height < 600 ? 128 : 190;
+            STRAP_LENGTH = Math.max(110, Math.min(150, Math.round(height * 0.24)));
             SEG_LEN = STRAP_LENGTH / NUM_SEGMENTS;
         }
 
@@ -462,7 +478,7 @@
             if (!lowEnd) stroke(4, 6, 'rgba(0,0,0,0.28)', RIBBON_W);
             stroke(0, 0, '#141414', RIBBON_W);
 
-            var srcH = strap.height / NUM_SEGMENTS * (STRAP_LENGTH / 190);
+            var srcH = strap.height / NUM_SEGMENTS * (STRAP_LENGTH / 150);
             for (var i = 0; i < NUM_SEGMENTS; i++) {
                 var a = points[i], b = points[i + 1];
                 var dx = b.x - a.x, dy = b.y - a.y;
@@ -528,57 +544,127 @@
     })();
 
     /* ---------------------------------------------------------------------
-       Feature 3: tap-to-play reels (nothing downloads until play)
+       Feature 3: reels. The source is attached ~250px before a reel scrolls
+       in, it plays muted once ~55% visible (or on hover), pauses when it
+       leaves view and resumes when it comes back. Sound is one tap away.
        --------------------------------------------------------------------- */
     var reels = $all('.reel');
-    function pauseOthers(except) {
-        reels.forEach(function (r) {
-            var v = $('.reel-video', r);
-            if (v && r !== except && !v.paused) v.pause();
-        });
-    }
+    var saveData = !!(navigator.connection && navigator.connection.saveData);
+    function autoplayAllowed() { return !prefersReducedMotion() && !saveData; }
+
     reels.forEach(function (reel) {
         var video = $('.reel-video', reel);
-        var btn = $('.reel-play', reel);
-        if (!video || !btn) return;
+        var frame = $('.reel-frame', reel);
+        var toggle = $('.reel-toggle', reel);
+        var sound = $('.reel-sound', reel);
+        var bar = $('.reel-progress i', reel);
+        if (!video) return;
+        var label = video.getAttribute('aria-label') || 'reel';
+        var state = { inView: false, hovered: false, userPaused: false };
+        reel._reel = state;
 
-        btn.addEventListener('click', function () {
-            pauseOthers(reel);
-            reel.classList.add('is-loading');
-            video.controls = true;
+        function attach() {
+            if (video.getAttribute('src')) return;
+            var src = video.getAttribute('data-src');
+            if (!src) return;
             video.preload = 'auto';
+            video.src = src;
+        }
+        state.attach = attach;
+
+        function sync() {
+            var paused = video.paused;
+            reel.classList.toggle('is-paused', paused && reel.classList.contains('is-started'));
+            if (toggle) toggle.setAttribute('aria-label', (paused ? 'Play: ' : 'Pause: ') + label);
+        }
+
+        function play() {
+            attach();
             var p = video.play();
-            reel.classList.add('is-started');
-            if (p && p.catch) {
-                p.catch(function () {
-                    // Autoplay with sound blocked: retry muted, controls stay visible.
-                    video.muted = true;
-                    video.play().catch(function () { /* user can use native controls */ });
-                });
-            }
-            video.focus({ preventScroll: true });
+            if (p && p.catch) p.catch(function () { sync(); });
+        }
+        function pause() { if (!video.paused) video.pause(); }
+
+        state.update = function () {
+            var wants = !state.userPaused && (state.hovered || (state.inView && autoplayAllowed()));
+            if (wants) play(); else pause();
+        };
+
+        video.addEventListener('playing', function () { reel.classList.add('is-started'); sync(); });
+        video.addEventListener('pause', sync);
+        video.addEventListener('timeupdate', function () {
+            if (bar && video.duration) bar.style.setProperty('--p', (video.currentTime / video.duration).toFixed(4));
+        });
+        video.addEventListener('error', function () {
+            if (video.getAttribute('src')) toast('A reel could not load. Please refresh to try again.');
         });
 
-        video.addEventListener('playing', function () {
-            reel.classList.remove('is-loading');
-            reel.classList.add('is-playing');
-            pauseOthers(reel);
-        });
-        video.addEventListener('pause', function () { reel.classList.remove('is-playing'); });
-        video.addEventListener('ended', function () { reel.classList.remove('is-playing'); });
-        video.addEventListener('error', function () {
-            reel.classList.remove('is-loading');
-            toast('That video could not load. Please try again later.');
-        });
-    });
-    if ('IntersectionObserver' in window && reels.length) {
-        var reelObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                var v = $('.reel-video', entry.target);
-                if (!entry.isIntersecting && v && !v.paused) v.pause();
+        if (toggle) {
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (video.paused) { state.userPaused = false; play(); }
+                else { state.userPaused = true; pause(); }
             });
-        }, { threshold: 0.15 });
-        reels.forEach(function (r) { reelObserver.observe(r); });
+        }
+        if (sound) {
+            sound.addEventListener('click', function (e) {
+                e.stopPropagation();
+                video.muted = !video.muted;
+                sound.setAttribute('aria-pressed', video.muted ? 'false' : 'true');
+                if (!video.muted) {
+                    // Only one reel speaks at a time.
+                    reels.forEach(function (r) {
+                        var v = $('.reel-video', r), b = $('.reel-sound', r);
+                        if (r !== reel && v && !v.muted) { v.muted = true; if (b) b.setAttribute('aria-pressed', 'false'); }
+                    });
+                    state.userPaused = false;
+                    play();
+                }
+            });
+        }
+        if (frame) {
+            // Tap/click anywhere on the reel toggles play and pause.
+            frame.addEventListener('click', function () { if (toggle) toggle.click(); });
+        }
+        if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            reel.addEventListener('mouseenter', function () { state.hovered = true; state.update(); });
+            reel.addEventListener('mouseleave', function () { state.hovered = false; state.update(); });
+        }
+        sync();
+    });
+
+    if ('IntersectionObserver' in window && reels.length) {
+        var nearObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting && entry.target._reel) {
+                    entry.target._reel.attach();
+                    nearObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '250px 0px' });
+        var viewObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                var st = entry.target._reel;
+                if (!st) return;
+                st.inView = entry.intersectionRatio >= 0.55;
+                if (!entry.isIntersecting) st.userPaused = false; // fresh start when it comes back
+                st.update();
+            });
+        }, { threshold: [0, 0.55] });
+        reels.forEach(function (r) {
+            // Visibility is measured on the video frame, not the caption.
+            var f = $('.reel-frame', r) || r;
+            f._reel = r._reel;
+            nearObserver.observe(r);
+            viewObserver.observe(f);
+        });
+    } else {
+        reels.forEach(function (r) { if (r._reel) r._reel.attach(); });
+    }
+    if (reduceMotionQuery && reduceMotionQuery.addEventListener) {
+        reduceMotionQuery.addEventListener('change', function () {
+            reels.forEach(function (r) { if (r._reel) r._reel.update(); });
+        });
     }
 
     /* ---------------------------------------------------------------------

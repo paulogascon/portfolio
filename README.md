@@ -18,7 +18,7 @@ Full-time remote creative technologist from Bacolod City, Philippines. Available
 - Live Bacolod / New York / London clock with full-time availability badge
 - Five services with deliverables and tools
 - Case-study dialogs (problem, process, result, links) for the video pipeline, document studio, knowledge ops and this site
-- Tap-to-play video reels: posters only, nothing downloads until you press play
+- Video reels that lazy-load ~250px before they scroll in, play muted while on screen (or on hover), pause when you scroll past, with a one-tap sound toggle
 - Workflow diagrams for the video, document and knowledge-ops pipelines
 - Inquiry builder that writes a ready message for Messenger or email, with an optional GCash quote request
 - Dark and light themes (shared with `/freelance/`), skip link, visible focus states
