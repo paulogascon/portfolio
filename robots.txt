@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paulogascon.github.io/portfolio/sitemap.xml
