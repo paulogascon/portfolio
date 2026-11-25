@@ -3,6 +3,16 @@
    Editorial, high-contrast, dark and light themes.
    ========================================================================== */
 
+/* Signature wordmark font (shared with the main portfolio) */
+@font-face {
+  font-family: "Modernline";
+  src: url("../../assets/fonts/modernline-bold.woff2") format("woff2"),
+       url("../../assets/fonts/modernline-bold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #F7F3EC;
   --bg-alt: #EFE8DD;
@@ -135,12 +145,30 @@ ul[class], ol[class] { list-style: none; padding: 0; }
 }
 .site-header.scrolled { border-bottom-color: var(--rule); }
 .header-inner { display: flex; align-items: center; gap: 1.5rem; height: 72px; }
-.brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; font-weight: 600; letter-spacing: -.01em; }
-.brand-mark {
-  width: 32px; height: 32px; border-radius: 50%; display: inline-grid; place-items: center;
-  background: var(--ink); color: var(--accent); font-family: var(--serif); font-style: italic; font-size: 1.15rem; line-height: 1; padding-bottom: 3px;
+.brand { display: inline-flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--ink); overflow: visible; }
+/* Wordmark: "Jhon Paulo" in the Modernline script, "Gascon" in bold sans */
+.wordmark { display: inline-flex; align-items: center; white-space: nowrap; overflow: visible; color: var(--ink); text-decoration: none; }
+.wm-first {
+  font-family: "Modernline", "Segoe Script", cursive; font-weight: normal; font-size: 1.6rem; line-height: 1.5; color: var(--accent);
+  letter-spacing: .02em; display: inline-block; overflow: visible; padding: .1em .38em .16em .12em; margin: -.1em 0;
 }
-.brand-mark.sm { width: 24px; height: 24px; font-size: .9rem; vertical-align: middle; margin-right: .35rem; }
+.wm-last { font-family: var(--sans); font-weight: 800; font-size: 1.05rem; letter-spacing: -.01em; line-height: 1; }
+.brand:hover .wm-first, .wordmark:hover .wm-first { color: var(--ink); }
+.wm-first { transition: color .25s var(--ease); }
+.brand-tag {
+  font-family: var(--mono); font-size: .66rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  padding-left: .75rem; border-left: 1px solid var(--rule); line-height: 1.2; white-space: nowrap;
+}
+.wordmark-sm .wm-first { font-size: 1.4rem; }
+.wordmark-sm .wm-last { font-size: .95rem; }
+.footer-brand { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 1rem; }
+
+.site-nav a, .btn { white-space: nowrap; }
+.site-nav { min-width: 0; }
+/* The tag only shows when the nav is collapsed and there is room for it. */
+.brand-tag { display: none; }
+@media (min-width: 481px) and (max-width: 1023px) { .brand-tag { display: block; } }
+@media (max-width: 360px) { .wm-first { font-size: 1.35rem; } .wm-last { font-size: .95rem; } }
 .site-nav { display: flex; align-items: center; gap: .25rem; margin-left: auto; }
 .site-nav a {
   text-decoration: none; font-size: .93rem; font-weight: 500; color: var(--ink-2);
