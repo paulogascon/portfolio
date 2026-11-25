@@ -67,6 +67,23 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // Anchor jumps: show the target section at once instead of waiting for the observer.
+  function revealTarget(hash) {
+    if (!hash || hash === '#' || hash === '#top') return;
+    var target;
+    try { target = document.querySelector(hash); } catch (e) { return; }
+    if (!target) return;
+    var section = target.closest('section') || target;
+    if (section.classList.contains('reveal')) section.classList.add('in');
+    $$('.reveal', section).forEach(function (el) { el.classList.add('in'); });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a) revealTarget(a.getAttribute('href'));
+  }, true);
+  window.addEventListener('hashchange', function () { revealTarget(location.hash); });
+  revealTarget(location.hash);
+
   /* --------------------------------------------------------- Package tabs */
   var tabs = $$('.tab');
   function selectTab(tab, focus) {
@@ -313,6 +330,7 @@
         fService.value = service;
         fillPackages(service, card.getAttribute('data-package'));
         render();
+        revealTarget('#inquire');
         var target = document.getElementById('inquire');
         target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
         setTimeout(function () { fName.focus({ preventScroll: true }); }, reduceMotion ? 0 : 450);
