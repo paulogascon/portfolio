@@ -1,67 +1,52 @@
-# 🌐 Jhon Paulo Gascon — Personal Portfolio Website
+# Jhon Paulo Gascon — Portfolio
 
-[![Live Website](https://img.shields.io/badge/Live_Demo-Visit_Portfolio-00e5ff?style=for-the-badge&logo=githubpages&logoColor=black)](https://paulogascon.github.io/portfolio/)
-[![BSIT Student](https://img.shields.io/badge/BSIT_2nd_Year-STI_West_Negros_University-0056b3?style=for-the-badge&logo=school)](https://wnu.sti.edu.ph/)
-[![Role](https://img.shields.io/badge/Creative-UI%2FUX_&_Motion_Editor-7928ca?style=for-the-badge)](https://paulogascon.github.io/portfolio/)
+Full-time remote creative technologist from Bacolod City, Philippines. Available 40+ hrs/week and open to US and UK shifts for:
 
-> **Welcome!** This is the official interactive personal portfolio of **Jhon Paulo V. Gascon (JP)** — a 2nd-year BS Information Technology student at STI West Negros University, frontend developer, UI/UX designer, and motion graphics editor based in Bacolod City, Philippines.
+- **Virtual assistance** — inbox, calendar, expenses, SOPs and trackers
+- **Frontend web development** — fast, accessible static sites and small web apps
+- **Motion & video editing** — reels, motion graphics, captions, −14 LUFS mastering
+- **AI workflow automation** — n8n, Python, Whisper, FFmpeg, Obsidian
+- **Document & deck design** — Word formatting, PDFs, PowerPoint decks (design and formatting only, no academic ghostwriting)
 
----
+**Live site:** https://paulogascon.github.io/portfolio/
+**Creative Studio:** https://paulogascon.github.io/portfolio/freelance/
+**Contact:** [Messenger](https://m.me/61593941011028) · jhonpaulosolsona12@gmail.com
 
-## 🚀 Live Demo
-Visit the live interactive website deployed directly on GitHub Pages:  
-👉 **[https://paulogascon.github.io/portfolio/](https://paulogascon.github.io/portfolio/)**
+## What's on the homepage
 
----
+- Interactive hanging ID card driven by a Verlet spring-physics simulation on canvas (mouse, touch and keyboard; lighter mode on low-end Android; respects reduced motion)
+- Live Bacolod / New York / London clock with full-time availability badge
+- Five services with deliverables and tools
+- Case-study dialogs (problem, process, result, links) for the video pipeline, document studio, knowledge ops and this site
+- Video reels that lazy-load ~250px before they scroll in, play muted while on screen (or on hover), pause when you scroll past, with a one-tap sound toggle
+- Workflow diagrams for the video, document and knowledge-ops pipelines
+- Inquiry builder that writes a ready message for Messenger or email, with an optional GCash quote request
+- Dark and light themes (shared with `/freelance/`), skip link, visible focus states
 
-## ✨ Key Features
+## Stack
 
-- 🪪 **Interactive 3D Physics Lanyard & ID Badge:** Custom-rendered realistic physics ID badge with fluid drag, inertia swing, and ambient neon glow.
-- 🎬 **Motion Video Reel Showcase:** Integrated modal video players featuring commercial-grade motion graphics and cinematic reels.
-- 🎨 **Modern Cyber-Tech UI/UX:** Built with a modern dark theme, glowing glassmorphic panels, and responsive layout across desktop and mobile.
-- 🛠️ **Interactive Project Configurator:** Live interactive filtering and project exploration.
-- ⚡ **High Performance & Accessibility:** Zero heavy framework dependencies, pure vanilla HTML5, modern CSS3 animations, and optimized JavaScript.
-
----
-
-## 🛠️ Tech Stack
-
-| Category | Technologies |
-| :--- | :--- |
-| **Frontend** | HTML5, CSS3 (Modern Flexbox/Grid, Glassmorphism), Vanilla JavaScript |
-| **Design & Assets** | Figma, Adobe After Effects, Photoshop, Custom Modernline Fonts |
-| **Hosting & CI/CD** | GitHub Pages, Git |
-| **Icons & Typography** | FontAwesome 6, Google Fonts (Plus Jakarta Sans, JetBrains Mono, Space Grotesk) |
-
----
-
-## 📂 Project Structure
+Pure static HTML, CSS and JavaScript on GitHub Pages. No framework, no build step.
+Fonts: Bricolage Grotesque (display) and Instrument Sans (body) from Google Fonts. Icons are an inline SVG sprite.
 
 ```text
+├── index.html            # Homepage
+├── css/home.css          # Homepage styles and theme tokens
+├── js/home.js            # Lanyard physics, clock, reels, dialogs, inquiry builder
+├── freelance/            # Paulo Creative Studio (standalone page)
 ├── assets/
-│   ├── fonts/               # Custom branding typography
-│   ├── images/              # Optimized UI graphics, badges & mockups
-│   ├── videos/              # Video reel showcases (.mp4)
-│   └── resume.pdf           # Downloadable curriculum vitae
-├── css/
-│   └── style.css            # Dark theme, glassmorphic styling & responsive rules
-├── js/
-│   └── script.js            # Interactive behaviors, 3D lanyard physics & controls
-├── generate_thumbnail.py    # Python script for high-res social preview card generation
-├── index.html               # Main landing page & semantic markup
-└── README.md                # Project documentation
+│   ├── images/           # Portrait, reel posters, social card
+│   ├── videos/           # Reels (H.264 MP4)
+│   └── resume.pdf        # One-page ATS-friendly résumé (generated from tools/resume.html)
+├── favicon.svg, favicon-32.png, apple-touch-icon.png
+├── sitemap.xml, robots.txt
+└── generate_thumbnail.py # Legacy social-card generator (not used by the new homepage)
 ```
 
----
+## Run locally
 
-## 👨‍💻 Author
+```bash
+python -m http.server 8000
+# then open http://localhost:8000/
+```
 
-**Jhon Paulo V. Gascon**  
-- **Degree:** BS in Information Technology (BSIT) — 2nd Year College  
-- **Institution:** STI West Negros University (STI WNU), Bacolod City, Philippines  
-- **GitHub:** [@paulogascon](https://github.com/paulogascon)  
-- **Live Portfolio:** [paulogascon.github.io/portfolio](https://paulogascon.github.io/portfolio/)  
-
----
-
-*Crafted with passion for clean code and modern design.* 🚀
+© 2026 Jhon Paulo V. Gascon
