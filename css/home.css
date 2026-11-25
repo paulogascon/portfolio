@@ -3,6 +3,16 @@
    Pure CSS, no framework. Dark and light themes share one token set.
    ========================================================================== */
 
+/* ---------- Signature font ---------- */
+@font-face {
+    font-family: "Modernline";
+    src: url("../assets/fonts/modernline-bold.woff2") format("woff2"),
+         url("../assets/fonts/modernline-bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ---------- Tokens ---------- */
 :root {
     --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
@@ -244,30 +254,41 @@ main:focus-visible { outline: none; }
     gap: var(--space-4);
 }
 
-.brand {
+.brand { text-decoration: none; }
+
+/* Signature wordmark: "Jhon Paulo" in Modernline script + "Gascon" in bold sans */
+.wordmark {
     display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    text-decoration: none;
+    align-items: baseline;
+    gap: 0.3em;
+    white-space: nowrap;
+    overflow: visible;
+    line-height: 1;
+}
+.wordmark-first {
+    display: inline-block;
+    font-family: "Modernline", "Segoe Script", "Brush Script MT", cursive;
+    font-weight: normal;
+    font-size: 1.6em;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    color: var(--accent-text);
+    /* generous padding so the script's loops and tails are never clipped */
+    padding: 0.3em 0.28em 0.3em 0.5em;
+    margin: -0.3em -0.18em -0.3em -0.5em;
+    overflow: visible;
+    transform: translateY(0.06em);
+    transition: transform 0.4s var(--ease-spring);
+}
+.wordmark-last {
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-}
-.brand-mark {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: var(--text);
-    color: var(--bg);
-    font-size: 0.85rem;
     font-weight: 800;
-    letter-spacing: 0.02em;
-    transition: transform 0.4s var(--ease-spring), background-color 0.35s ease;
+    font-size: 1em;
+    letter-spacing: -0.02em;
+    color: var(--text);
 }
-.brand:hover .brand-mark { transform: rotate(-8deg); }
-.brand-name { font-size: 1rem; }
+.brand.wordmark { font-size: 1.02rem; }
+.brand.wordmark:hover .wordmark-first { transform: translateY(0.06em) rotate(-3deg); }
 
 .site-nav .nav-list { display: flex; align-items: center; gap: 0.25rem; }
 .nav-link {
@@ -345,8 +366,8 @@ main:focus-visible { outline: none; }
     .nav-cta-mobile .btn { width: 100%; --btn-pad-y: 0.95rem; }
 }
 
-@media (max-width: 420px) {
-    .brand-name { display: none; }
+@media (max-width: 380px) {
+    .brand.wordmark { font-size: 0.92rem; }
 }
 
 /* ---------- Shared section bits ---------- */
@@ -1304,8 +1325,8 @@ input[type="text"]:focus-visible, select:focus-visible, textarea:focus-visible {
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding-block: var(--space-7) var(--space-6); background: var(--bg-alt); }
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: var(--space-5); align-items: start; }
-.footer-name { font-family: var(--font-display); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.025em; }
-.footer-sub { color: var(--muted); font-size: 0.92rem; }
+.footer-name { font-size: var(--step-2); }
+.footer-sub { color: var(--muted); font-size: 0.92rem; margin-top: 0.85rem; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
 .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.92rem; }
 .footer-links a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
