@@ -856,7 +856,6 @@ main:focus-visible { outline: none; }
     transition: transform 0.45s var(--ease-out), border-color 0.3s ease;
 }
 .case:hover { transform: translateY(-4px); border-color: var(--line-strong); }
-.case--wide { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-rows: auto; }
 
 .case-body { display: grid; gap: 0.65rem; align-content: start; padding: clamp(1.25rem, 1rem + 1vw, 2rem); }
 .case-meta { font-family: var(--font-label); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); }
@@ -873,34 +872,6 @@ main:focus-visible { outline: none; }
     display: grid;
     place-items: center;
 }
-.case--wide .case-cover { border-bottom: 0; border-right: 1px solid var(--line); min-height: 300px; }
-
-/* cover: study hub mock UI */
-.mock {
-    width: 78%;
-    max-width: 440px;
-    aspect-ratio: 16 / 10;
-    display: grid;
-    grid-template-columns: 22% 1fr;
-    border-radius: 12px;
-    background: var(--bg);
-    border: 1px solid var(--line-strong);
-    overflow: hidden;
-    transform: rotate(-3deg) translateY(6px);
-    box-shadow: 0 30px 50px -30px rgba(0, 0, 0, 0.6);
-    transition: transform 0.6s var(--ease-out);
-}
-.case:hover .mock { transform: rotate(-1deg) translateY(0); }
-.mock-side { display: grid; align-content: start; gap: 8px; padding: 12px 10px; border-right: 1px solid var(--line); }
-.mock-side i { height: 7px; border-radius: 4px; background: var(--line-strong); }
-.mock-side i:first-child { background: var(--accent); width: 70%; }
-.mock-body { display: grid; align-content: start; gap: 10px; padding: 12px; }
-.mock-body b { height: 10px; width: 45%; border-radius: 4px; background: var(--text); opacity: 0.8; }
-.mock-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.mock-cards span { aspect-ratio: 1; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); }
-.mock-cards span:nth-child(2) { background: var(--accent-soft); }
-.mock-row { display: grid; grid-template-columns: 2fr 1fr; gap: 6px; }
-.mock-row span { height: 38px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line); }
 
 /* cover: video waveform */
 .wave { display: flex; align-items: center; gap: 5px; height: 90px; }
@@ -970,8 +941,6 @@ main:focus-visible { outline: none; }
 
 @media (max-width: 860px) {
     .cases { grid-template-columns: minmax(0, 1fr); }
-    .case--wide { grid-template-columns: minmax(0, 1fr); }
-    .case--wide .case-cover { border-right: 0; border-bottom: 1px solid var(--line); min-height: 230px; }
 }
 
 /* ---------- Case dialogs ---------- */

@@ -17,7 +17,7 @@ Full-time remote creative technologist from Bacolod City, Philippines. Available
 - Interactive hanging ID card driven by a Verlet spring-physics simulation on canvas (mouse, touch and keyboard; lighter mode on low-end Android; respects reduced motion)
 - Live Bacolod / New York / London clock with full-time availability badge
 - Five services with deliverables and tools
-- Case-study dialogs (problem, process, result, links), starting with [STI 2G Study Hub](https://github.com/paulogascon/sti-2g-study-hub)
+- Case-study dialogs (problem, process, result, links) for the video pipeline, document studio, knowledge ops and this site
 - Tap-to-play video reels: posters only, nothing downloads until you press play
 - Workflow diagrams for the video, document and knowledge-ops pipelines
 - Inquiry builder that writes a ready message for Messenger or email, with an optional GCash quote request
@@ -36,7 +36,7 @@ Fonts: Bricolage Grotesque (display) and Instrument Sans (body) from Google Font
 ├── assets/
 │   ├── images/           # Portrait, reel posters, social card
 │   ├── videos/           # Reels (H.264 MP4)
-│   └── resume.pdf
+│   └── resume.pdf        # One-page ATS-friendly résumé (generated from tools/resume.html)
 ├── favicon.svg, favicon-32.png, apple-touch-icon.png
 ├── sitemap.xml, robots.txt
 └── generate_thumbnail.py # Legacy social-card generator (not used by the new homepage)
