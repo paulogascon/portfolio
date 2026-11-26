@@ -45,6 +45,16 @@
             }
             d.setAttribute('data-theme', t);
             d.classList.add('js');
+            // Boot-up intro: once per visit, never for reduced motion, Data Saver,
+            // deep links (#contact) or a hop back from the Creative Studio.
+            try {
+                var c = navigator.connection || {};
+                var internal = document.referrer && document.referrer.indexOf(location.origin) === 0;
+                if (!sessionStorage.getItem('jp-booted') && !location.hash && !internal && !c.saveData &&
+                    !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+                    d.classList.add('is-booting');
+                }
+            } catch (e) {}
         })();
     </script>
 
@@ -82,6 +92,15 @@
     </script>
 </head>
 <body>
+    <!-- Boot-up intro (js/boot.js). Hidden unless html.is-booting; a CSS failsafe removes it. -->
+    <div class="boot" id="boot" aria-hidden="true">
+        <div class="boot-inner">
+            <p class="boot-kicker"><span class="boot-dot"></span>Portfolio · Bacolod, PH</p>
+            <p class="boot-name"><span class="boot-type" id="bootType"></span><span class="boot-caret"></span></p>
+            <span class="boot-bar"><span></span></span>
+            <p class="boot-skip">Click or press any key to skip</p>
+        </div>
+    </div>
     <!-- Icon sprite -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
         <defs>
@@ -237,6 +256,7 @@
                                     <span>Bacolod · PH</span>
                                     <span class="idcard-code"></span>
                                 </div>
+                                <span class="idcard-holo" aria-hidden="true"></span>
                                 <span class="idcard-gloss" aria-hidden="true"></span>
                             </div>
                             <span class="drag-hint" id="dragHint" aria-hidden="true">
@@ -789,9 +809,11 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+    <script src="js/boot.js" defer></script>
     <script src="js/home.js" defer></script>
     <script src="js/globe-fx.js" defer></script>
     <script src="js/motion.js" defer></script>
     <script src="js/assistant.js" data-base="" defer></script>
+    <script src="js/sound.js" defer></script>
 </body>
 </html>

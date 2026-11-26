@@ -85,7 +85,7 @@
         'attribute vec3 aSphere;',   // sphere: unit vector; ring: (angle, radius, height)
         'attribute vec4 aFlat;',     // xy: wave lattice -1..1, zw: grid lattice -1..1
         'attribute vec2 aRnd;',      // x: seed 0..1, y: kind (0 sphere, 1 ring)
-        'uniform float uTime, uIntro, uPoint, uDpr, uFocus;',
+        'uniform float uTime, uIntro, uPoint, uDpr, uFocus, uBurst;',
         'uniform vec3 uW;',          // shape weights: globe, wave, grid
         'uniform vec2 uRes, uCenter, uMouse;',
         'uniform float uRadius, uMouseOn, uAspect;',
@@ -111,6 +111,7 @@
         '      glow=0.35+0.5*step(0.93,seed);',
         '    }',
         '    p*=1.0+(1.0-uIntro)*(1.6+2.4*seed);',
+        '    p*=uBurst*(1.0+(1.0-min(uBurst,1.0))*0.9*seed);',
         '    p=uRot*p;',
         '    float persp=CAM/(CAM-p.z); float front=clamp(p.z*0.5+0.5,0.0,1.0);',
         '    sp+=uW.x*(uCenter+vec2(p.x,-p.y)*persp*uRadius);',
@@ -254,7 +255,7 @@
     sphere = flat = rnd = order = null;
 
     var U = {};
-    ['uTime', 'uIntro', 'uPoint', 'uDpr', 'uFocus', 'uW', 'uRes', 'uCenter', 'uMouse', 'uRadius', 'uMouseOn', 'uAspect',
+    ['uTime', 'uIntro', 'uPoint', 'uDpr', 'uFocus', 'uBurst', 'uW', 'uRes', 'uCenter', 'uMouse', 'uRadius', 'uMouseOn', 'uAspect',
      'uRot', 'uRingTilt', 'uTilt', 'uColA', 'uColB', 'uColInk', 'uGain', 'uInkMix'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
 
     gl.disable(gl.DEPTH_TEST);
@@ -431,6 +432,7 @@
         globeAnchor(sy, anchor);
         gl.uniform1f(U.uTime, clock);
         gl.uniform1f(U.uIntro, introEase);
+        gl.uniform1f(U.uBurst, burst);
         gl.uniform3f(U.uW, weights[0], weights[1], weights[2]);
         gl.uniform1f(U.uFocus, focus * (anchor.f || 1));
         gl.uniform2f(U.uCenter, anchorS.x, anchorS.y);
@@ -462,6 +464,13 @@
 
         clock += dt;
         intro = Math.min(1, intro + dt / 1.8);
+        if (burstT >= 0) {
+            // Boot burst: out from the core, overshoot, settle (easeOutBack)
+            burstT += dt;
+            var bx = Math.min(1, burstT / 1.15), c1 = 1.9;
+            burst = Math.max(0.02, 1 + (c1 + 1) * Math.pow(bx - 1, 3) + c1 * Math.pow(bx - 1, 2));
+            if (bx >= 1) { burst = 1; burstT = -1; }
+        }
         spin += dt * 0.09;
         var tk = Math.min(1, dt * 2.5);
         tilt.x += (pointer.tx - tilt.x) * tk;
@@ -510,7 +519,7 @@
     // Still mode: a finished globe in the hero only, redrawn on scroll.
     var drawQueued = false;
     function requestDraw() {
-        if (!ready || running || drawQueued) return;
+        if (!ready || running || drawQueued || waitBoot) return;
         drawQueued = true;
         requestAnimationFrame(function () {
             drawQueued = false;
@@ -518,7 +527,7 @@
             var past = window.scrollY > (layout.cardY + H * 0.2);
             canvas.classList.toggle('is-hidden', stillMode() && past);
             weights[0] = 1; weights[1] = 0; weights[2] = 0; focus = 1;
-            clock = 4.2; spin = 0.6; mouseOn = 0; tilt.x = 0; tilt.y = 0;
+            clock = 4.2; spin = 0.6; mouseOn = 0; tilt.x = 0; tilt.y = 0; burst = 1;
             globeAnchor(window.scrollY, anchor);
             anchorS.x = anchor.x; anchorS.y = anchor.y; anchorS.r = anchor.r;
             draw(1);
@@ -526,6 +535,7 @@
     }
 
     function sync() {
+        if (waitBoot) return;
         if (!doc.hidden && !paused && !stillMode()) { canvas.classList.remove('is-hidden'); play(); }
         else { stop(); requestDraw(); }
     }
@@ -540,8 +550,22 @@
         weights = t0.w.slice(); focus = t0.focus;
         applyTheme();
         root.classList.add('fx-on');
-        sync();
-        requestAnimationFrame(function () { canvas.classList.add('is-live'); });
+        if (waitBoot) {
+            // Hold the globe until the boot intro lifts, then burst it open.
+            var go = function () {
+                if (!waitBoot) return;
+                waitBoot = false;
+                intro = 1; burst = 0.02; burstT = 0;
+                canvas.classList.add('is-burst');
+                sync();
+                requestAnimationFrame(function () { canvas.classList.add('is-live'); });
+            };
+            if (window.__jpBootDone) go();
+            else window.addEventListener('jp:boot-done', go, { once: true });
+        } else {
+            sync();
+            requestAnimationFrame(function () { canvas.classList.add('is-live'); });
+        }
 
         new MutationObserver(applyTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
@@ -570,10 +594,15 @@
         });
     }
 
+    // During the boot intro, set up right away so the burst is ready on time.
+    var waitBoot = root.classList.contains('is-booting') && !window.__jpBootDone;
+    var burst = 1, burstT = -1;
+
     function whenIdle(fn) {
         if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 1200 });
         else setTimeout(fn, 300);
     }
-    if (doc.readyState === 'complete') whenIdle(init);
+    if (waitBoot) init();
+    else if (doc.readyState === 'complete') whenIdle(init);
     else window.addEventListener('load', function () { whenIdle(init); });
 })();

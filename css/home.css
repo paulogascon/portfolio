@@ -1522,3 +1522,172 @@ input[type="text"]:focus-visible, select:focus-visible, textarea:focus-visible {
     .flow { position: static; }
     .live-dot::after { display: none; }
 }
+
+/* ==========================================================================
+   Futuristic layer: boot intro, holographic ID foil, glass service cards
+   ========================================================================== */
+
+/* ---------- Boot-up intro (js/boot.js) ---------- */
+.boot { display: none; }
+.is-booting { overflow: hidden; }
+.is-booting .boot,
+.boot.is-out {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background:
+        radial-gradient(60vmax 60vmax at 50% 55%, rgba(255, 107, 53, 0.10), transparent 60%),
+        var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    /* Failsafe: never stays up if the script doesn't run */
+    animation: boot-failsafe 0.01s linear 3.2s forwards;
+}
+@keyframes boot-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+.boot.is-out {
+    pointer-events: none;
+    animation: boot-out 0.55s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+@keyframes boot-out {
+    0% { opacity: 1; clip-path: circle(150% at 50% 50%); }
+    100% { opacity: 0; clip-path: circle(0% at 50% 50%); }
+}
+.boot.is-out .boot-inner { transform: scale(0.94); opacity: 0; transition: transform 0.45s ease, opacity 0.3s ease; }
+.boot-inner { display: grid; justify-items: center; gap: 14px; text-align: center; }
+.boot-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.boot-dot { width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 10px #3ddc84; }
+.boot-name {
+    min-height: 1.1em;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.2rem + 4.2vw, 4.4rem);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+.boot-caret {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.9em;
+    margin-left: 0.06em;
+    vertical-align: -0.08em;
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent);
+    animation: boot-caret 0.5s steps(1) infinite;
+}
+@keyframes boot-caret { 50% { opacity: 0; } }
+.boot-bar { position: relative; width: min(240px, 60vw); height: 2px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.boot-bar span {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, #ff6b35, #ffc9a8);
+    box-shadow: 0 0 12px rgba(255, 107, 53, 0.8);
+    transform-origin: 0 50%;
+    animation: boot-bar 0.95s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes boot-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.boot-skip { font-size: 0.78rem; color: var(--faint, var(--muted)); }
+/* The hero rises in as the globe bursts */
+.is-booted .hero-copy,
+.is-booted .hero-visual { animation: boot-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.is-booted .hero-visual { animation-delay: 0.08s; }
+@keyframes boot-rise { from { opacity: 0; transform: translateY(16px) scale(0.985); } }
+.site-fx.is-burst { transition-duration: 0.25s; }
+
+/* ---------- Holographic foil on the ID card ---------- */
+.idcard-holo {
+    position: absolute;
+    inset: -45%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.55;
+    mix-blend-mode: hard-light;
+    background:
+        repeating-linear-gradient(118deg,
+            rgba(255, 70, 160, 0) 0%,
+            rgba(255, 70, 160, 0.22) 4%,
+            rgba(255, 214, 90, 0.22) 8%,
+            rgba(90, 255, 180, 0.22) 12%,
+            rgba(70, 170, 255, 0.22) 16%,
+            rgba(170, 100, 255, 0.22) 20%,
+            rgba(255, 70, 160, 0) 24%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.35) 0 0.6px, transparent 1.2px) 0 0 / 7px 7px;
+    will-change: transform, opacity;
+}
+
+/* ---------- Frosted-glass service cards ---------- */
+.services { border-top: 0; display: grid; gap: 14px; }
+.service {
+    --mx: 50%;
+    --my: 0%;
+    padding: clamp(1.25rem, 0.9rem + 1.4vw, 2rem);
+    border: 1px solid var(--glass-line);
+    border-radius: 22px;
+    background: var(--glass-bg);
+    box-shadow: inset 0 1px 0 var(--glass-hi), 0 24px 48px -36px rgba(0, 0, 0, 0.7);
+    isolation: isolate;
+}
+:root,
+:root[data-theme="dark"] {
+    --glass-bg: color-mix(in srgb, #181a1e 58%, transparent);
+    --glass-line: rgba(242, 239, 233, 0.10);
+    --glass-hi: rgba(255, 255, 255, 0.06);
+}
+:root[data-theme="light"] {
+    --glass-bg: color-mix(in srgb, #ffffff 58%, transparent);
+    --glass-line: rgba(20, 20, 20, 0.10);
+    --glass-hi: rgba(255, 255, 255, 0.9);
+}
+/* Real blur only where it's cheap: desktop. Phones get a denser tint. */
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
+    .service { -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+}
+@media not all and (hover: hover) and (pointer: fine) and (min-width: 961px) {
+    :root, :root[data-theme="dark"] { --glass-bg: color-mix(in srgb, #181a1e 82%, transparent); }
+    :root[data-theme="light"] { --glass-bg: color-mix(in srgb, #ffffff 80%, transparent); }
+}
+/* Inner spotlight (replaces the old top rule) */
+.service::before {
+    inset: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx) var(--my), rgba(255, 107, 53, 0.13), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.service:hover::before { width: auto; opacity: 1; }
+/* Glowing edge: a gradient ring masked to the 1px border */
+.service::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(260px circle at var(--mx) var(--my), rgba(255, 140, 90, 0.95), rgba(255, 107, 53, 0.35) 40%, transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.has-spotlight .service:hover::after { opacity: 1; }
+/* Touch screens: a soft, still glow along the top-left edge */
+@media (hover: none), (pointer: coarse) {
+    .service::after {
+        opacity: 0.7;
+        background: radial-gradient(240px circle at 0% 0%, rgba(255, 107, 53, 0.85), rgba(255, 107, 53, 0.2) 45%, transparent 75%);
+    }
+}
+@media (max-width: 680px) { .services { gap: 12px; } .service { border-radius: 18px; } }
