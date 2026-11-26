@@ -15,6 +15,7 @@ Full-time remote creative technologist from Bacolod City, Philippines. Available
 ## What's on the homepage
 
 - Interactive hanging ID card driven by a Verlet spring-physics simulation on canvas (mouse, touch and keyboard; lighter mode on low-end Android; respects reduced motion)
+- Living particle globe behind the card, written in raw WebGL/GLSL with no library: noise-morphed sphere and orbit ring that react to cursor, touch, phone tilt and scroll; pauses off-screen, static frame for reduced motion and very low-end phones, skipped on Data Saver
 - Live Bacolod / New York / London clock with full-time availability badge
 - Five services with deliverables and tools
 - Case-study dialogs (problem, process, result, links) for the video pipeline, document studio, knowledge ops and this site
@@ -32,6 +33,7 @@ Fonts: Bricolage Grotesque (display) and Instrument Sans (body) from Google Font
 ├── index.html            # Homepage
 ├── css/home.css          # Homepage styles and theme tokens
 ├── js/home.js            # Lanyard physics, clock, reels, dialogs, inquiry builder
+├── js/hero-fx.js         # WebGL particle globe behind the hero card
 ├── freelance/            # Paulo Creative Studio (standalone page)
 ├── assets/
 │   ├── images/           # Portrait, reel posters, social card

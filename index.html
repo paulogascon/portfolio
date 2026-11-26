@@ -149,6 +149,7 @@
     <main id="main" tabindex="-1">
         <!-- ============ 1a Hero ============ -->
         <section class="hero" id="top" aria-labelledby="heroTitle">
+            <div class="hero-fx" id="heroFx" aria-hidden="true"></div>
             <div class="wrap hero-grid">
                 <div class="hero-copy">
                     <p class="status-pill">
@@ -774,10 +775,10 @@
             <h2 id="case-site-title">This portfolio</h2>
             <div class="case-grid">
                 <section><h3>Problem</h3><p>A portfolio has to load fast on mobile data, read well in dark and light mode, and still show some personality in the first few seconds.</p></section>
-                <section><h3>Process</h3><p>Pure static HTML, CSS and JavaScript on GitHub Pages, with no framework or build step. The hanging ID card runs on a custom Verlet spring-physics simulation drawn to canvas, with mouse, touch and keyboard control and a lighter mode for low-end Android phones.</p></section>
+                <section><h3>Process</h3><p>Pure static HTML, CSS and JavaScript on GitHub Pages, with no framework or build step. The hanging ID card runs on a custom Verlet spring-physics simulation drawn to canvas, with mouse, touch and keyboard control and a lighter mode for low-end Android phones. Behind it, a particle globe written in raw WebGL shaders (no library) morphs with 3D noise and reacts to the cursor, touch, phone tilt and scroll, then pauses whenever it's off-screen.</p></section>
                 <section><h3>Result</h3><p>A responsive, accessible site with a skip link, visible focus states, reduced-motion support, lazy-loaded reels that play only while on screen, and the inquiry builder you can try below.</p></section>
             </div>
-            <ul class="tool-chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Canvas 2D</li><li>Verlet physics</li><li>GitHub Pages</li></ul>
+            <ul class="tool-chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Canvas 2D</li><li>WebGL / GLSL</li><li>Verlet physics</li><li>GitHub Pages</li></ul>
             <div class="dialog-actions">
                 <a class="btn btn-primary" href="https://github.com/paulogascon/portfolio" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> View the code</a>
             </div>
@@ -787,5 +788,6 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="js/home.js" defer></script>
+    <script src="js/hero-fx.js" defer></script>
 </body>
 </html>
