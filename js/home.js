@@ -696,7 +696,7 @@
     });
 
     /* ---------------------------------------------------------------------
-       Feature 5: inquiry builder (Messenger / email / GCash quote)
+       Feature 5: inquiry builder (Messenger / email / PayMaya quote)
        --------------------------------------------------------------------- */
     var form = $('#inquiryBuilder');
     if (form) {
@@ -718,7 +718,7 @@
             var tz = $('#bTimezone').value;
             var start = $('#bStart').value;
             var note = ($('#bNote').value || '').trim();
-            var gcash = $('#bGcash').checked;
+            var paymaya = $('#bPaymaya').checked;
 
             var lines = [];
             lines.push('Hi JP! I found your portfolio and would like to work with you.');
@@ -728,7 +728,7 @@
             if (engagement) lines.push('Engagement: ' + engagement);
             lines.push('My time zone: ' + tz);
             lines.push('Start: ' + start);
-            if (gcash) lines.push('Payment: Please send a quote I can pay via GCash (Philippines).');
+            if (paymaya) lines.push('Payment: Please send a quote I can pay via PayMaya (Philippines).');
             if (note) {
                 lines.push('');
                 lines.push('Details: ' + note);

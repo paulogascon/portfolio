@@ -475,7 +475,7 @@ main:focus-visible { outline: none; }
     pointer-events: none;
 }
 
-/* Hero FX: WebGL particle globe (js/hero-fx.js). The glow is the static fallback. */
+/* Hero glow behind the card: the static fallback for the particle globe (js/globe-fx.js) */
 .hero-fx {
     --fx-x: 78%;
     --fx-y: 48%;
@@ -497,15 +497,25 @@ main:focus-visible { outline: none; }
     background: radial-gradient(closest-side, var(--fx-glow), transparent 72%);
     opacity: 0.9;
 }
-.hero-fx-canvas {
-    position: absolute;
+/* The particle canvas itself is fixed behind the whole page (js/globe-fx.js) */
+.site-fx {
+    position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
+    pointer-events: none;
     opacity: 0;
     transition: opacity 1.2s ease;
 }
-.hero-fx.is-live .hero-fx-canvas { opacity: 1; }
+.site-fx.is-live { opacity: 1; }
+.site-fx.is-hidden { opacity: 0; transition-duration: 0.4s; }
+/* Let the particles show faintly through the tinted sections */
+.fx-on .section--alt { background: color-mix(in srgb, var(--bg-alt) 62%, transparent); }
+/* A blurred header over a moving canvas re-blurs every frame: skip it on phones */
+@media (max-width: 960px) {
+    .fx-on .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: color-mix(in srgb, var(--bg) 94%, transparent); }
+}
 :root,
 :root[data-theme="dark"] { --fx-glow: rgba(255, 107, 53, 0.16); }
 :root[data-theme="light"] { --fx-glow: rgba(255, 107, 53, 0.13); }
@@ -1455,6 +1465,27 @@ input[type="text"]:focus-visible, select:focus-visible, textarea:focus-visible {
 }
 .js [data-reveal].is-visible { opacity: 1; transform: none; }
 
+/* ---------- Scroll story ---------- */
+/* Siblings reveal one after another (--i is set by js/motion.js) */
+.js [data-reveal] { transition-delay: calc(var(--i, 0) * 70ms); }
+/* Section titles wipe up out of a mask, kickers slide in */
+.js .section-head[data-reveal] { transform: none; }
+.js .section-head[data-reveal] .kicker { opacity: 0; transform: translateX(-14px); transition: opacity 0.6s var(--ease-out), transform 0.7s var(--ease-out); }
+.js .section-head[data-reveal] .section-title { clip-path: inset(-0.2em -0.2em 100% -0.2em); transform: translateY(0.35em); transition: clip-path 0.9s var(--ease-out) 0.08s, transform 0.9s var(--ease-out) 0.08s; }
+.js .section-head[data-reveal] .section-intro { opacity: 0; transform: translateY(10px); transition: opacity 0.7s var(--ease-out) 0.25s, transform 0.8s var(--ease-out) 0.25s; }
+.js .section-head[data-reveal].is-visible .kicker,
+.js .section-head[data-reveal].is-visible .section-intro { opacity: 1; transform: none; }
+.js .section-head[data-reveal].is-visible .section-title { clip-path: inset(-0.2em); transform: none; }
+/* Workflows pin and stack like cards as you scroll (roomy desktop screens only) */
+@media (min-width: 961px) and (min-height: 700px) {
+    .flows { gap: var(--space-6); }
+    .flow {
+        position: sticky;
+        top: calc(var(--header-h) + 20px + var(--i, 0) * 16px);
+        box-shadow: 0 -1px 0 var(--line), 0 26px 50px -30px rgba(0, 0, 0, 0.55);
+    }
+}
+
 /* ---------- Responsive hero ---------- */
 @media (max-width: 960px) {
     .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
@@ -1485,5 +1516,9 @@ input[type="text"]:focus-visible, select:focus-visible, textarea:focus-visible {
         transition-duration: 0.001ms !important;
     }
     .js [data-reveal] { opacity: 1; transform: none; }
+    .js .section-head[data-reveal] .kicker,
+    .js .section-head[data-reveal] .section-intro { opacity: 1; transform: none; }
+    .js .section-head[data-reveal] .section-title { clip-path: none; transform: none; }
+    .flow { position: static; }
     .live-dot::after { display: none; }
 }
