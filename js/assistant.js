@@ -99,8 +99,8 @@
               return 'Paulo is available <b>full-time, 40+ hours a week</b>, from Bacolod City, Philippines (UTC+8), and open to <b>US and UK shifts</b>.' + (t ? ' Right now it\'s ' + t + ' in Bacolod.' : '') + ' You can hire him full-time, part-time or for a one-off project.';
           } },
 
-        { id: 'payment', k: { pay: 3, payment: 3, payments: 3, gcash: 4, paypal: 3, wise: 2, bank: 2, invoice: 2.5, method: 1.5, methods: 1.5, deposit: 2, bayad: 3, upfront: 2 },
-          a: 'GCash for clients in the Philippines. Other methods can be arranged for international clients. The amount, method and timing are written into your quote before any work starts.' },
+        { id: 'payment', k: { pay: 3, payment: 3, payments: 3, gcash: 3, paymaya: 4, maya: 3, paypal: 3, wise: 2, bank: 2, invoice: 2.5, method: 1.5, methods: 1.5, deposit: 2, bayad: 3, upfront: 2 },
+          a: 'Paulo uses <b>PayMaya</b> for clients in the Philippines (he doesn\'t use GCash). Other methods can be arranged for international clients. The amount, method and timing are written into your quote before any work starts.' },
 
         { id: 'policy', k: { essay: 4, essays: 4, thesis: 4, research: 2, homework: 4, assignment: 4, assignments: 4, exam: 4, exams: 4, quiz: 4, quizzes: 4, coursework: 4, ghostwrite: 5, ghostwriting: 5, class: 2, classes: 2, capstone: 3, dissertation: 4, plagiarism: 3 },
           p: ['write my', 'do my', 'take my'],
