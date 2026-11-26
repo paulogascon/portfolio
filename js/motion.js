@@ -56,6 +56,10 @@
             ring.classList.toggle('is-hot', !!onHot);
             ring.classList.toggle('is-text', !!onText);
             dot.classList.toggle('is-text', !!onText);
+            // The chat widget has its own UI, so no glow ring on top of it.
+            var inChat = !!(t.closest && t.closest('.pa'));
+            ring.classList.toggle('is-off', inChat);
+            dot.classList.toggle('is-off', inChat);
             kick();
         }, { passive: true });
         doc.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') ring.classList.add('is-down'); }, { passive: true });
@@ -68,7 +72,7 @@
         });
 
         // Magnetic pull: buttons lean toward the cursor (max ~8px), then spring back.
-        var MAGNETIC = '.btn, .icon-btn, .pa-launcher, [data-magnetic]';
+        var MAGNETIC = '.btn, .icon-btn, [data-magnetic]';
         var active = null;
         doc.addEventListener('pointermove', function (e) {
             if (e.pointerType !== 'mouse') return;
