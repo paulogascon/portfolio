@@ -101,33 +101,3 @@ html.is-leaving body { opacity: 0; transform: translateY(-8px); transition: opac
     body { animation: none !important; }
     body::after { display: none; }
 }
-
-/* ---------- Sound toggle (js/sound.js), shared by both pages ---------- */
-.sound-toggle { -webkit-tap-highlight-color: transparent; }
-.sound-toggle svg { width: 20px; height: 20px; }
-.sound-toggle .snd-on { display: none; }
-.sound-toggle[aria-pressed="true"] .snd-on { display: block; }
-.sound-toggle[aria-pressed="true"] .snd-off { display: none; }
-.sound-toggle[aria-pressed="true"] { color: #ff6b35; border-color: rgba(255, 107, 53, 0.55); }
-:root[data-theme="light"] .sound-toggle[aria-pressed="true"] { color: #c2410c; }
-.sound-toggle .snd-label { display: none; }
-/* Phones: the toggle lives in the menu as a full row with a label */
-.nav-sound { list-style: none; }
-.nav-sound .sound-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    height: auto;
-    padding: 0.95rem 0.25rem;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    font: inherit;
-    font-size: 1.05rem;
-    font-weight: 600;
-    text-align: left;
-}
-.nav-sound .sound-toggle .snd-label { display: inline; }
-.nav-sound .sound-toggle:hover { background: none; }
-.nav-sound:empty { display: none; }
