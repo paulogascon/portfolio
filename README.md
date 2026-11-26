@@ -29,7 +29,7 @@ Full-time remote creative technologist from Bacolod City, Philippines. Available
 ## Stack
 
 Pure static HTML, CSS and JavaScript on GitHub Pages. No framework, no build step.
-Fonts: Bricolage Grotesque (display) and Instrument Sans (body) from Google Fonts. Icons are an inline SVG sprite.
+Fonts: Bricolage Grotesque (display) and Instrument Sans (body), self-hosted as variable WOFF2 in `assets/fonts/` (latin and latin-ext subsets, preloaded), so the first paint needs no third-party requests. Icons are an inline SVG sprite.
 
 ```text
 ├── index.html            # Homepage
@@ -42,12 +42,12 @@ Fonts: Bricolage Grotesque (display) and Instrument Sans (body) from Google Font
 ├── css/assistant.css     # Assistant styles
 ├── freelance/            # Paulo Creative Studio (standalone page)
 ├── assets/
+│   ├── fonts/            # Self-hosted WOFF2 (homepage and Creative Studio)
 │   ├── images/           # Portrait, reel posters, social card
 │   ├── videos/           # Reels (H.264 MP4)
 │   └── resume.pdf        # One-page ATS-friendly résumé (generated from tools/resume.html)
 ├── favicon.svg, favicon-32.png, apple-touch-icon.png
-├── sitemap.xml, robots.txt
-└── generate_thumbnail.py # Legacy social-card generator (not used by the new homepage)
+└── sitemap.xml, robots.txt
 ```
 
 ## Run locally

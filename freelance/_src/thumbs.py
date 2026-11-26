@@ -2,6 +2,7 @@
 
 Usage: python3 freelance/_src/thumbs.py [doc-name ...]
 Writes freelance/previews/<slug>.png (1600x1000, modal), <slug>-card.png (800x500, cards)
+plus <slug>-card.webp (what the page loads; the PNG is its fallback)
 and <slug>-cover.png (first page, 640 px tall, hero).
 Needs pdftoppm (poppler) on PATH and Pillow.
 """
@@ -68,6 +69,7 @@ def compose(name):
     card = full.resize((800, 500), Image.LANCZOS)
     p2 = os.path.join(OUT, f"{slug}-card.png")
     card.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(p2, optimize=True)
+    card.save(os.path.join(OUT, f"{slug}-card.webp"), "WEBP", quality=84, method=6)
     cov = render(pdf, 1, 640)
     p3 = os.path.join(OUT, f"{slug}-cover.png")
     cov.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(p3, optimize=True)

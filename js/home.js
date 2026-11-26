@@ -557,7 +557,9 @@
        leaves view and resumes when it comes back. Sound is one tap away.
        --------------------------------------------------------------------- */
     var reels = $all('.reel');
-    var saveData = !!(navigator.connection && navigator.connection.saveData);
+    // Data Saver or a 2G connection: reels wait for a tap instead of autoplaying.
+    var conn = navigator.connection || {};
+    var saveData = !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
     function autoplayAllowed() { return !prefersReducedMotion() && !saveData; }
 
     reels.forEach(function (reel) {
@@ -645,7 +647,8 @@
         var nearObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting && entry.target._reel) {
-                    entry.target._reel.attach();
+                    // Only fetch ahead when the reel will autoplay; otherwise a tap loads it.
+                    if (autoplayAllowed()) entry.target._reel.attach();
                     nearObserver.unobserve(entry.target);
                 }
             });

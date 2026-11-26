@@ -16,9 +16,11 @@
   <meta property="og:title" content="Paulo Creative Studio · Your content, designed to be read">
   <meta property="og:description" content="Presentation decks, studio PDFs, Word formatting and proofreading, resumes and video edits, built from the content you bring.">
   <meta property="og:image" content="https://paulogascon.github.io/portfolio/freelance/assets/og-studio.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Paulo Creative Studio: decks, PDFs, Word formatting, resumes and video edits">
+  <meta property="og:locale" content="en_PH">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Paulo Creative Studio · Your content, designed to be read">
   <meta name="twitter:description" content="Presentation decks, studio PDFs, Word formatting and proofreading, resumes and video edits, built from the content you bring.">
@@ -35,16 +37,17 @@
         t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
       }
       document.documentElement.setAttribute('data-theme', t);
+      // Set here (not in freelance.js) so reveal styles apply from first paint, with no flash.
+      document.documentElement.classList.add('js');
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="preload" href="../assets/fonts/modernline-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Fonts are self-hosted (css/freelance.css): no third-party round trips before first paint -->
+  <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/freelance.css">
   <link rel="stylesheet" href="../css/motion.css">
-  <link rel="stylesheet" href="../css/assistant.css">
+  <!-- ../css/assistant.css is loaded by ../js/assistant.js, so it never blocks first paint -->
 
   <script type="application/ld+json">
   {
@@ -82,7 +85,6 @@
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M12 3.5c-4.7 0-8.5 3.4-8.5 7.7 0 2.4 1.2 4.6 3.1 6V21l3.2-1.8c.7.2 1.4.3 2.2.3 4.7 0 8.5-3.4 8.5-7.7S16.7 3.5 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m7.5 13 3-3 2.2 2 3.8-3.2-3 3.2-2.2-2z" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c1.3-3.4 4.2-5 7.5-5s6.2 1.6 7.5 5"/></g></symbol>
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6.5-6.1-6.5-11a6.5 6.5 0 0 1 13 0c0 4.9-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></g></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></g></symbol>
@@ -92,8 +94,8 @@
 
   <header class="site-header" id="top">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Jhon Paulo Gascon, Creative Studio, back to top">
-        <span class="wordmark" aria-hidden="true"><span class="wm-first">Jhon Paulo</span><span class="wm-last">Gascon</span></span>
+      <a class="brand" href="#top" aria-label="Jhon Paulo Gascon Creative Studio, back to top">
+        <span class="wordmark" aria-hidden="true"><span class="wm-first">Jhon Paulo</span> <span class="wm-last">Gascon</span></span>
         <span class="brand-tag" aria-hidden="true">Creative Studio</span>
       </a>
       <nav class="site-nav" id="siteNav" aria-label="Studio sections">
@@ -137,8 +139,8 @@
           </dl>
         </div>
         <div class="hero-art" aria-hidden="true">
-          <img class="sheet sheet-3" src="previews/va-onboarding-kit-cover.png" alt="" width="495" height="640">
-          <img class="sheet sheet-2" src="previews/apa7-formatting-guide-cover.png" alt="" width="495" height="640">
+          <img class="sheet sheet-3" src="previews/va-onboarding-kit-cover.png" alt="" width="495" height="640" fetchpriority="high">
+          <img class="sheet sheet-2" src="previews/apa7-formatting-guide-cover.png" alt="" width="495" height="640" fetchpriority="high">
           <img class="sheet sheet-1" src="previews/studio-services-guide-cover.png" alt="" width="495" height="640" fetchpriority="high">
         </div>
       </div>
@@ -345,7 +347,7 @@
 
         <div class="samples" id="sampleGrid">
           <article class="sample" data-type="pdf" data-title="Paulo Creative Studio: Services and Process Guide" data-preview="previews/studio-services-guide.png" data-file="samples/pdf/Paulo_Creative_Studio_Services_Guide.pdf" data-open="samples/pdf/Paulo_Creative_Studio_Services_Guide.pdf">
-            <button class="sample-thumb" type="button" aria-label="Preview Services and Process Guide"><img src="previews/studio-services-guide-card.png" alt="" width="800" height="500" loading="lazy"></button>
+            <button class="sample-thumb" type="button" aria-label="Preview Services and Process Guide"><img src="previews/studio-services-guide-card.webp" onerror="this.onerror=null;this.src='previews/studio-services-guide-card.png'" alt="" width="800" height="500" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-pdf"><svg class="i" aria-hidden="true"><use href="#i-pdf"/></svg>PDF</span> 6 pages · Brochure</p>
               <h3>Services and Process Guide</h3>
@@ -355,7 +357,7 @@
           </article>
 
           <article class="sample" data-type="pdf" data-title="APA 7 Formatting Quick Reference" data-preview="previews/apa7-formatting-guide.png" data-file="samples/pdf/APA_7_Formatting_Quick_Reference.pdf" data-open="samples/pdf/APA_7_Formatting_Quick_Reference.pdf">
-            <button class="sample-thumb" type="button" aria-label="Preview APA 7 Formatting Quick Reference"><img src="previews/apa7-formatting-guide-card.png" alt="" width="800" height="500" loading="lazy"></button>
+            <button class="sample-thumb" type="button" aria-label="Preview APA 7 Formatting Quick Reference"><img src="previews/apa7-formatting-guide-card.webp" onerror="this.onerror=null;this.src='previews/apa7-formatting-guide-card.png'" alt="" width="800" height="500" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-pdf"><svg class="i" aria-hidden="true"><use href="#i-pdf"/></svg>PDF</span> 5 pages · Reference guide</p>
               <h3>APA 7 Formatting Quick Reference</h3>
@@ -365,7 +367,7 @@
           </article>
 
           <article class="sample" data-type="pdf" data-title="Virtual Assistant Client Onboarding Kit" data-preview="previews/va-onboarding-kit.png" data-file="samples/pdf/Virtual_Assistant_Client_Onboarding_Kit.pdf" data-open="samples/pdf/Virtual_Assistant_Client_Onboarding_Kit.pdf">
-            <button class="sample-thumb" type="button" aria-label="Preview Virtual Assistant Client Onboarding Kit"><img src="previews/va-onboarding-kit-card.png" alt="" width="800" height="500" loading="lazy"></button>
+            <button class="sample-thumb" type="button" aria-label="Preview Virtual Assistant Client Onboarding Kit"><img src="previews/va-onboarding-kit-card.webp" onerror="this.onerror=null;this.src='previews/va-onboarding-kit-card.png'" alt="" width="800" height="500" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-pdf"><svg class="i" aria-hidden="true"><use href="#i-pdf"/></svg>PDF</span> 5 pages · Template kit</p>
               <h3>Virtual Assistant Client Onboarding Kit</h3>
@@ -375,7 +377,7 @@
           </article>
 
           <article class="sample" data-type="pdf" data-title="Remote Work Security Checklist" data-preview="previews/remote-security-checklist.png" data-file="samples/pdf/Remote_Work_Security_Checklist.pdf" data-open="samples/pdf/Remote_Work_Security_Checklist.pdf">
-            <button class="sample-thumb" type="button" aria-label="Preview Remote Work Security Checklist"><img src="previews/remote-security-checklist-card.png" alt="" width="800" height="500" loading="lazy"></button>
+            <button class="sample-thumb" type="button" aria-label="Preview Remote Work Security Checklist"><img src="previews/remote-security-checklist-card.webp" onerror="this.onerror=null;this.src='previews/remote-security-checklist-card.png'" alt="" width="800" height="500" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-pdf"><svg class="i" aria-hidden="true"><use href="#i-pdf"/></svg>PDF</span> 4 pages · Checklist</p>
               <h3>Remote Work Security Checklist</h3>
@@ -385,7 +387,7 @@
           </article>
 
           <article class="sample" data-type="word" data-title="Inbox and Calendar Management SOP (Word)" data-preview="previews/va-inbox-sop.png" data-file="samples/docx/Inbox_and_Calendar_Management_SOP.docx" data-open="samples/docx/Inbox_and_Calendar_Management_SOP.pdf">
-            <button class="sample-thumb" type="button" aria-label="Preview Inbox and Calendar Management SOP"><img src="previews/va-inbox-sop-card.png" alt="" width="800" height="500" loading="lazy"></button>
+            <button class="sample-thumb" type="button" aria-label="Preview Inbox and Calendar Management SOP"><img src="previews/va-inbox-sop-card.webp" onerror="this.onerror=null;this.src='previews/va-inbox-sop-card.png'" alt="" width="800" height="500" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-word"><svg class="i" aria-hidden="true"><use href="#i-word"/></svg>Word</span> 5 pages · SOP</p>
               <h3>Inbox and Calendar Management SOP</h3>
@@ -395,7 +397,7 @@
           </article>
 
           <article class="sample" data-type="resume" data-title="Resume and Cover Letter Template Pack" data-preview="previews/resume-template-pack.png" data-file="samples/pdf/Resume_and_Cover_Letter_Template_Pack.pdf" data-open="samples/pdf/Resume_and_Cover_Letter_Template_Pack.pdf">
-            <button class="sample-thumb" type="button" aria-label="Preview Resume and Cover Letter Template Pack"><img src="previews/resume-template-pack-card.png" alt="" width="800" height="500" loading="lazy"></button>
+            <button class="sample-thumb" type="button" aria-label="Preview Resume and Cover Letter Template Pack"><img src="previews/resume-template-pack-card.webp" onerror="this.onerror=null;this.src='previews/resume-template-pack-card.png'" alt="" width="800" height="500" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-resume"><svg class="i" aria-hidden="true"><use href="#i-resume"/></svg>Resume</span> 5 pages · Templates</p>
               <h3>Resume and Cover Letter Template Pack</h3>
@@ -404,8 +406,8 @@
             </div>
           </article>
 
-          <article class="sample" data-type="deck" data-title="AI in Education: Opportunities and Risks (PowerPoint)" data-preview="previews/pptx_sample_1_ai_education.png" data-file="samples/pptx/AI_in_Education_Opportunities_Risks.pptx">
-            <button class="sample-thumb" type="button" aria-label="Preview AI in Education deck"><img src="previews/pptx_sample_1_ai_education.png" alt="" width="1280" height="720" loading="lazy"></button>
+          <article class="sample" data-type="deck" data-title="AI in Education: Opportunities and Risks (PowerPoint)" data-preview="previews/pptx_sample_1_ai_education.webp" data-file="samples/pptx/AI_in_Education_Opportunities_Risks.pptx">
+            <button class="sample-thumb" type="button" aria-label="Preview AI in Education deck"><img src="previews/pptx_sample_1_ai_education.webp" onerror="this.onerror=null;this.src='previews/pptx_sample_1_ai_education.png'" alt="" width="1280" height="720" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-deck"><svg class="i" aria-hidden="true"><use href="#i-deck"/></svg>PPTX</span> 11 slides · 16:9</p>
               <h3>AI in Education: Opportunities and Risks</h3>
@@ -414,8 +416,8 @@
             </div>
           </article>
 
-          <article class="sample" data-type="deck" data-title="The Life and Works of Jose Rizal (PowerPoint)" data-preview="previews/pptx_sample_2_rizal.png" data-file="samples/pptx/Life_and_Works_of_Jose_Rizal.pptx">
-            <button class="sample-thumb" type="button" aria-label="Preview Jose Rizal deck"><img src="previews/pptx_sample_2_rizal.png" alt="" width="1280" height="720" loading="lazy"></button>
+          <article class="sample" data-type="deck" data-title="The Life and Works of Jose Rizal (PowerPoint)" data-preview="previews/pptx_sample_2_rizal.webp" data-file="samples/pptx/Life_and_Works_of_Jose_Rizal.pptx">
+            <button class="sample-thumb" type="button" aria-label="Preview Jose Rizal deck"><img src="previews/pptx_sample_2_rizal.webp" onerror="this.onerror=null;this.src='previews/pptx_sample_2_rizal.png'" alt="" width="1280" height="720" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-deck"><svg class="i" aria-hidden="true"><use href="#i-deck"/></svg>PPTX</span> 11 slides · 16:9</p>
               <h3>The Life and Works of Jose Rizal</h3>
@@ -424,8 +426,8 @@
             </div>
           </article>
 
-          <article class="sample" data-type="deck" data-title="Crime Scene Investigation: Fundamentals (PowerPoint)" data-preview="previews/pptx_sample_4_csi.png" data-file="samples/pptx/Crime_Scene_Investigation_Basics.pptx">
-            <button class="sample-thumb" type="button" aria-label="Preview Crime Scene Investigation deck"><img src="previews/pptx_sample_4_csi.png" alt="" width="1280" height="720" loading="lazy"></button>
+          <article class="sample" data-type="deck" data-title="Crime Scene Investigation: Fundamentals (PowerPoint)" data-preview="previews/pptx_sample_4_csi.webp" data-file="samples/pptx/Crime_Scene_Investigation_Basics.pptx">
+            <button class="sample-thumb" type="button" aria-label="Preview Crime Scene Investigation deck"><img src="previews/pptx_sample_4_csi.webp" onerror="this.onerror=null;this.src='previews/pptx_sample_4_csi.png'" alt="" width="1280" height="720" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-deck"><svg class="i" aria-hidden="true"><use href="#i-deck"/></svg>PPTX</span> 11 slides · 16:9</p>
               <h3>Crime Scene Investigation: Fundamentals</h3>
@@ -434,8 +436,8 @@
             </div>
           </article>
 
-          <article class="sample" data-type="deck" data-title="Stress Management and Wellness (PowerPoint)" data-preview="previews/pptx_sample_5_wellness.png" data-file="samples/pptx/Stress_Management_Student_Wellness.pptx">
-            <button class="sample-thumb" type="button" aria-label="Preview Stress Management deck"><img src="previews/pptx_sample_5_wellness.png" alt="" width="1280" height="720" loading="lazy"></button>
+          <article class="sample" data-type="deck" data-title="Stress Management and Wellness (PowerPoint)" data-preview="previews/pptx_sample_5_wellness.webp" data-file="samples/pptx/Stress_Management_Student_Wellness.pptx">
+            <button class="sample-thumb" type="button" aria-label="Preview Stress Management deck"><img src="previews/pptx_sample_5_wellness.webp" onerror="this.onerror=null;this.src='previews/pptx_sample_5_wellness.png'" alt="" width="1280" height="720" loading="lazy"></button>
             <div class="sample-body">
               <p class="sample-meta"><span class="badge badge-deck"><svg class="i" aria-hidden="true"><use href="#i-deck"/></svg>PPTX</span> 11 slides · 16:9</p>
               <h3>Stress Management and Wellness</h3>
@@ -598,7 +600,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p class="footer-brand"><a class="wordmark wordmark-sm" href="../" aria-label="Jhon Paulo Gascon, main portfolio"><span class="wm-first">Jhon Paulo</span><span class="wm-last">Gascon</span></a><span>Paulo Creative Studio · © 2026 Jhon Paulo V. Gascon</span></p>
+      <p class="footer-brand"><a class="wordmark wordmark-sm" href="../" aria-label="Jhon Paulo Gascon, main portfolio"><span class="wm-first">Jhon Paulo</span> <span class="wm-last">Gascon</span></a><span>Paulo Creative Studio · © 2026 Jhon Paulo V. Gascon</span></p>
       <p class="footer-links"><a href="../">Main portfolio</a><a href="#policy">Studio policy</a><a href="#inquire">Inquire</a><a href="#top">Back to top</a></p>
     </div>
   </footer>
