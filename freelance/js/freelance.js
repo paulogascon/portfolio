@@ -136,7 +136,10 @@
     var file = card.getAttribute('data-file');
     var open = card.getAttribute('data-open');
     viewerTitle.textContent = title;
-    viewerImg.src = card.getAttribute('data-preview');
+    var preview = card.getAttribute('data-preview');
+    // WebP previews fall back to the PNG next to them on very old browsers.
+    viewerImg.onerror = /\.webp$/.test(preview) ? function () { viewerImg.onerror = null; viewerImg.src = preview.replace(/\.webp$/, '.png'); } : null;
+    viewerImg.src = preview;
     viewerImg.alt = 'Preview pages of ' + title;
     viewerDownload.href = file;
     viewerDownload.setAttribute('download', file.split('/').pop());

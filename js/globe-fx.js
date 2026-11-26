@@ -12,7 +12,9 @@
    and scroll.
 
    Performance rules (target: a steady 60fps):
-   - Starts after the page is idle, fades in, never blocks first paint.
+   - Starts after the page is idle, fades in, never blocks first paint:
+     the WebGL context, shaders (compiled off-thread where the browser
+     supports it) and particle geometry are all set up after load.
    - No allocations per frame; layout is cached and re-read only on resize.
    - Adaptive quality: if frames run slow, it lowers the pixel density first,
      then caps to 30fps, so scrolling stays smooth on budget Android phones.
@@ -44,13 +46,6 @@
     var canvas = doc.createElement('canvas');
     canvas.className = 'site-fx';
     canvas.setAttribute('aria-hidden', 'true');
-
-    var gl = null;
-    try {
-        gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false, premultipliedAlpha: true, powerPreference: 'low-power', desynchronized: true }) ||
-             canvas.getContext('experimental-webgl');
-    } catch (e) { gl = null; }
-    if (!gl) { heroHost.classList.add('is-static'); return; }
 
     /* ---------------- Shaders ---------------- */
     var NOISE = [
@@ -180,87 +175,114 @@
         var s = gl.createShader(type);
         gl.shaderSource(s, src);
         gl.compileShader(s);
-        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-            if (window.console) console.warn('[globe-fx]', gl.getShaderInfoLog(s));
-            return null;
-        }
         return s;
     }
-    var vs = compile(gl.VERTEX_SHADER, VERT);
-    var fs = compile(gl.FRAGMENT_SHADER, FRAG);
-    if (!vs || !fs) { heroHost.classList.add('is-static'); return; }
-    var prog = gl.createProgram();
-    gl.attachShader(prog, vs);
-    gl.attachShader(prog, fs);
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { heroHost.classList.add('is-static'); return; }
-    gl.useProgram(prog);
 
-    /* ---------------- Geometry ---------------- */
-    var small = window.innerWidth < 700;
-    var SPHERE = lowEnd ? 2600 : (small ? 4000 : 7000);
-    var RING = lowEnd ? 600 : (small ? 900 : 1500);
-    var total = SPHERE + RING;
-    var sphere = new Float32Array(total * 3);
-    var flat = new Float32Array(total * 4);
-    var rnd = new Float32Array(total * 2);
-    var golden = Math.PI * (3 - Math.sqrt(5));
-    var i;
-    for (i = 0; i < SPHERE; i++) {
-        var y = 1 - (i / (SPHERE - 1)) * 2;
-        var rad = Math.sqrt(1 - y * y);
-        var th = golden * i;
-        sphere[i * 3] = Math.cos(th) * rad;
-        sphere[i * 3 + 1] = y;
-        sphere[i * 3 + 2] = Math.sin(th) * rad;
-        rnd[i * 2] = Math.random();
-        rnd[i * 2 + 1] = 0;
-    }
-    for (i = SPHERE; i < total; i++) {
-        var band = Math.random();
-        sphere[i * 3] = Math.random() * Math.PI * 2;
-        sphere[i * 3 + 1] = 1.3 + band * band * 0.26 + (Math.random() - 0.5) * 0.04;
-        sphere[i * 3 + 2] = (Math.random() - 0.5) * 0.035;
-        rnd[i * 2] = Math.random();
-        rnd[i * 2 + 1] = 1;
-    }
-    // Wave and grid lattices. Particles are dealt out in a shuffled order so the
-    // morph looks like a swarm re-forming, not a sheet sliding.
-    var order = new Uint32Array(total);
-    for (i = 0; i < total; i++) order[i] = i;
-    for (i = total - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var tmp = order[i]; order[i] = order[j]; order[j] = tmp; }
-    var aspect = Math.max(0.45, Math.min(2.4, window.innerWidth / Math.max(1, window.innerHeight)));
-    var waveCols = Math.ceil(Math.sqrt(total * 1.6)), waveRows = Math.ceil(total / waveCols);
-    var gridRows = Math.max(8, Math.round(Math.sqrt(total / aspect))), gridCols = Math.ceil(total / gridRows);
-    for (i = 0; i < total; i++) {
-        var k = order[i];
-        var wc = k % waveCols, wr = Math.floor(k / waveCols);
-        flat[i * 4] = (wc / (waveCols - 1)) * 2 - 1 + (Math.random() - 0.5) * 0.01;
-        flat[i * 4 + 1] = (wr / (waveRows - 1)) * 2 - 1;
-        var gc = k % gridCols, gr = Math.floor(k / gridCols);
-        flat[i * 4 + 2] = (gc / (gridCols - 1)) * 2 - 1;
-        flat[i * 4 + 3] = (gr / Math.max(1, gridRows - 1)) * 2 - 1;
-    }
-    function attrib(name, data, size) {
-        var loc = gl.getAttribLocation(prog, name);
-        var buf = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-        gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
-        gl.enableVertexAttribArray(loc);
-        gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
-    }
-    attrib('aSphere', sphere, 3);
-    attrib('aFlat', flat, 4);
-    attrib('aRnd', rnd, 2);
-    sphere = flat = rnd = order = null;
+    /* ---------------- Setup (after first paint, off the critical path) ----------------
+       Creating the WebGL context and compiling shaders is the heaviest part of
+       this file, so none of it runs while the page is loading. With
+       KHR_parallel_shader_compile the driver compiles on another thread and we
+       only check the result once it's done, so the main thread never stalls. */
+    var gl = null, prog = null, U = {}, total = 0;
 
-    var U = {};
-    ['uTime', 'uIntro', 'uPoint', 'uDpr', 'uFocus', 'uBurst', 'uW', 'uRes', 'uCenter', 'uMouse', 'uRadius', 'uMouseOn', 'uAspect',
-     'uRot', 'uRingTilt', 'uTilt', 'uColA', 'uColB', 'uColInk', 'uGain', 'uInkMix'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+    function setup() {
+        try {
+            gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false, stencil: false, premultipliedAlpha: true, powerPreference: 'low-power', desynchronized: true }) ||
+                 canvas.getContext('experimental-webgl');
+        } catch (e) { gl = null; }
+        if (!gl) { heroHost.classList.add('is-static'); return; }
 
-    gl.disable(gl.DEPTH_TEST);
-    gl.enable(gl.BLEND);
-    gl.clearColor(0, 0, 0, 0);
+        var vs = compile(gl.VERTEX_SHADER, VERT);
+        var fs = compile(gl.FRAGMENT_SHADER, FRAG);
+        prog = gl.createProgram();
+        gl.attachShader(prog, vs);
+        gl.attachShader(prog, fs);
+        gl.linkProgram(prog);
+
+        var parallel = gl.getExtension('KHR_parallel_shader_compile');
+        (function waitForLink() {
+            if (parallel && !gl.getProgramParameter(prog, parallel.COMPLETION_STATUS_KHR)) {
+                setTimeout(waitForLink, 16);
+                return;
+            }
+            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+                if (window.console) console.warn('[globe-fx]', gl.getShaderInfoLog(vs) || gl.getShaderInfoLog(fs) || gl.getProgramInfoLog(prog));
+                heroHost.classList.add('is-static');
+                return;
+            }
+            gl.useProgram(prog);
+            // Geometry in its own task, so no single task holds the main thread long.
+            setTimeout(function () { buildScene(); init(); }, 0);
+        })();
+    }
+
+    function buildScene() {
+        /* ---------------- Geometry ---------------- */
+        var small = window.innerWidth < 700;
+        var SPHERE = lowEnd ? 2600 : (small ? 4000 : 7000);
+        var RING = lowEnd ? 600 : (small ? 900 : 1500);
+        total = SPHERE + RING;
+        var sphere = new Float32Array(total * 3);
+        var flat = new Float32Array(total * 4);
+        var rnd = new Float32Array(total * 2);
+        var golden = Math.PI * (3 - Math.sqrt(5));
+        var i;
+        for (i = 0; i < SPHERE; i++) {
+            var y = 1 - (i / (SPHERE - 1)) * 2;
+            var rad = Math.sqrt(1 - y * y);
+            var th = golden * i;
+            sphere[i * 3] = Math.cos(th) * rad;
+            sphere[i * 3 + 1] = y;
+            sphere[i * 3 + 2] = Math.sin(th) * rad;
+            rnd[i * 2] = Math.random();
+            rnd[i * 2 + 1] = 0;
+        }
+        for (i = SPHERE; i < total; i++) {
+            var band = Math.random();
+            sphere[i * 3] = Math.random() * Math.PI * 2;
+            sphere[i * 3 + 1] = 1.3 + band * band * 0.26 + (Math.random() - 0.5) * 0.04;
+            sphere[i * 3 + 2] = (Math.random() - 0.5) * 0.035;
+            rnd[i * 2] = Math.random();
+            rnd[i * 2 + 1] = 1;
+        }
+        // Wave and grid lattices. Particles are dealt out in a shuffled order so the
+        // morph looks like a swarm re-forming, not a sheet sliding.
+        var order = new Uint32Array(total);
+        for (i = 0; i < total; i++) order[i] = i;
+        for (i = total - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var tmp = order[i]; order[i] = order[j]; order[j] = tmp; }
+        var aspect = Math.max(0.45, Math.min(2.4, window.innerWidth / Math.max(1, window.innerHeight)));
+        var waveCols = Math.ceil(Math.sqrt(total * 1.6)), waveRows = Math.ceil(total / waveCols);
+        var gridRows = Math.max(8, Math.round(Math.sqrt(total / aspect))), gridCols = Math.ceil(total / gridRows);
+        for (i = 0; i < total; i++) {
+            var k = order[i];
+            var wc = k % waveCols, wr = Math.floor(k / waveCols);
+            flat[i * 4] = (wc / (waveCols - 1)) * 2 - 1 + (Math.random() - 0.5) * 0.01;
+            flat[i * 4 + 1] = (wr / (waveRows - 1)) * 2 - 1;
+            var gc = k % gridCols, gr = Math.floor(k / gridCols);
+            flat[i * 4 + 2] = (gc / (gridCols - 1)) * 2 - 1;
+            flat[i * 4 + 3] = (gr / Math.max(1, gridRows - 1)) * 2 - 1;
+        }
+        function attrib(name, data, size) {
+            var loc = gl.getAttribLocation(prog, name);
+            var buf = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+            gl.enableVertexAttribArray(loc);
+            gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+        }
+        attrib('aSphere', sphere, 3);
+        attrib('aFlat', flat, 4);
+        attrib('aRnd', rnd, 2);
+        sphere = flat = rnd = order = null;
+
+        ['uTime', 'uIntro', 'uPoint', 'uDpr', 'uFocus', 'uBurst', 'uW', 'uRes', 'uCenter', 'uMouse', 'uRadius', 'uMouseOn', 'uAspect',
+         'uRot', 'uRingTilt', 'uTilt', 'uColA', 'uColB', 'uColInk', 'uGain', 'uInkMix'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+
+        gl.disable(gl.DEPTH_TEST);
+        gl.enable(gl.BLEND);
+        gl.clearColor(0, 0, 0, 0);
+    }
+
 
     /* ---------------- Theme ---------------- */
     function hex(h) {
@@ -301,7 +323,9 @@
     var chapters = [];   // { id, top, bottom } in document coordinates
 
     /* ---------------- Layout (cached; re-read only on resize) ---------------- */
-    var W = 0, H = 0, dpr = 1, dprCap = 1.75;
+    // Real sizes from the start: a pointer event before the first measure() must
+    // never divide by zero (a NaN tilt would blank the globe for good).
+    var W = Math.max(1, window.innerWidth), H = Math.max(1, window.innerHeight), dpr = 1, dprCap = 1.75;
     var layout = { cardX: 0, cardY: 0, r: 200, stacked: false, peekX: 0, peekY: 0, peekR: 0 };
 
     function docTop(el) { var r = el.getBoundingClientRect(); return r.top + window.scrollY; }
@@ -594,15 +618,18 @@
         });
     }
 
-    // During the boot intro, set up right away so the burst is ready on time.
+    // The boot intro holds the globe back and bursts it open when it lifts.
     var waitBoot = root.classList.contains('is-booting') && !window.__jpBootDone;
     var burst = 1, burstT = -1;
 
-    function whenIdle(fn) {
-        if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 1200 });
-        else setTimeout(fn, 300);
+    function whenIdle(fn, wait) {
+        if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: wait });
+        else setTimeout(fn, Math.min(300, wait));
     }
-    if (waitBoot) init();
-    else if (doc.readyState === 'complete') whenIdle(init);
-    else window.addEventListener('load', function () { whenIdle(init); });
+    // During the boot intro, start soon (the intro covers the page and the
+    // globe has to be ready for its burst). Otherwise wait until the page has
+    // loaded and the browser is idle.
+    if (waitBoot) whenIdle(setup, 250);
+    else if (doc.readyState === 'complete') whenIdle(setup, 1200);
+    else window.addEventListener('load', function () { whenIdle(setup, 1200); });
 })();

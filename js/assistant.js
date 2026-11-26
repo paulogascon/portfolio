@@ -11,9 +11,10 @@
    Paulo's Messenger so they can paste and send.
 
    Include on a page with:
-   <link rel="stylesheet" href="css/assistant.css">
    <script src="js/assistant.js" data-base="" defer></script>
    (data-base="../" from /freelance/)
+   The script loads css/assistant.css itself and shows the launcher once the
+   styles are in, so the chat never blocks the page's first paint.
    ========================================================================== */
 (function () {
     'use strict';
@@ -259,7 +260,7 @@
 
         root.appendChild(panel);
         root.appendChild(launcher);
-        doc.body.appendChild(root);
+        whenStyled(function () { doc.body.appendChild(root); });
 
         log = panel.querySelector('.pa-log');
         chips = panel.querySelector('.pa-chips');
@@ -366,6 +367,28 @@
 
     // Expose the matcher for testing in the console: PauloAI.answer('rates?')
     window.PauloAI = { answer: function (q) { return answer(q); } };
+
+    // Styles load in parallel with the page; the launcher appears when they're ready.
+    var styled = false, styledQueue = [];
+    function whenStyled(fn) { if (styled) fn(); else styledQueue.push(fn); }
+    (function loadStyles() {
+        function ready() {
+            if (styled) return;
+            styled = true;
+            styledQueue.splice(0).forEach(function (fn) { fn(); });
+        }
+        var existing = doc.querySelector('link[href$="css/assistant.css"]');
+        if (existing) {
+            if (existing.sheet) ready();
+            else existing.addEventListener('load', ready);
+            return;
+        }
+        var css = doc.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = BASE + 'css/assistant.css';
+        css.addEventListener('load', ready);
+        doc.head.appendChild(css);
+    })();
 
     if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', build);
     else build();

@@ -7,7 +7,7 @@ This folder is not published: GitHub Pages (Jekyll) skips folders that start wit
 | `docs/*.html` + `docs/print.css` | Sources of the five sample PDFs (US Letter, editorial layout) |
 | `fonts/` | Fraunces (SIL OFL) used by the PDFs; Inter and JetBrains Mono must be installed locally |
 | `build.mjs` | Renders the PDFs into `../samples/pdf/` with Playwright Chromium, then runs `thumbs.py` |
-| `thumbs.py` | Builds `../previews/<slug>.png` (modal), `<slug>-card.png` (cards) and `<slug>-cover.png` (hero) |
+| `thumbs.py` | Builds `../previews/<slug>.png` (modal), `<slug>-card.png` + `<slug>-card.webp` (cards) and `<slug>-cover.png` (hero) |
 | `make_sop_docx.py` | Builds the Word sample `../samples/docx/Inbox_and_Calendar_Management_SOP.docx` |
 | `og.html` | Source of the social preview `../assets/og-studio.png` (1200×630) |
 
