@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Shared motion layer (js/motion.js): cursor, magnetic buttons,
+   page transitions, scroll progress. Used by the homepage and /freelance/.
+   ========================================================================== */
+
+/* ---------- Page transitions (Chrome, Edge, Safari 18.2+) ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vt-out 0.28s cubic-bezier(0.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: vt-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-12px) scale(0.985); filter: blur(3px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(18px) scale(1.01); } }
+
+/* The signature wordmark glides between the two pages */
+.site-header .wordmark { view-transition-name: jp-brand; }
+
+/* Fallback fade for other browsers */
+html.is-leaving body { opacity: 0; transform: translateY(-8px); transition: opacity 0.22s ease, transform 0.22s ease; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+@supports not (view-transition-name: none) { body { animation: page-in 0.35s ease both; } }
+
+/* ---------- Scroll progress bar (scroll-driven, no JavaScript) ---------- */
+@supports (animation-timeline: scroll()) {
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        z-index: 200;
+        background: linear-gradient(90deg, #ff6b35, #ffb48a);
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        animation: scroll-progress linear both;
+        animation-timeline: scroll(root block);
+        pointer-events: none;
+    }
+    @keyframes scroll-progress { to { transform: scaleX(1); } }
+}
+
+/* ---------- Glowing cursor (desktop mouse only) ---------- */
+.cursor-ring,
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    will-change: transform;
+}
+.has-cursor .cursor-ring,
+.has-cursor .cursor-dot { opacity: 1; }
+.cursor-muted .cursor-ring,
+.cursor-muted .cursor-dot { opacity: 0; }
+.cursor-ring {
+    width: 38px;
+    height: 38px;
+    margin: -19px 0 0 -19px;
+    border: 1.5px solid rgba(255, 107, 53, 0.75);
+    box-shadow: 0 0 22px 2px rgba(255, 107, 53, 0.35), inset 0 0 12px rgba(255, 107, 53, 0.2);
+}
+.cursor-ring::after {
+    content: "";
+    position: absolute;
+    inset: -1.5px;
+    border-radius: 50%;
+    background: rgba(255, 107, 53, 0.12);
+    transform: scale(0.2);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+.cursor-ring.is-hot::after { transform: scale(1); opacity: 1; }
+.cursor-ring.is-hot { border-color: rgba(255, 107, 53, 0.95); }
+.cursor-ring.is-down::after { transform: scale(0.8); }
+.cursor-ring.is-text { opacity: 0 !important; }
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    background: #ff6b35;
+    box-shadow: 0 0 10px 2px rgba(255, 107, 53, 0.8);
+}
+.cursor-dot.is-text { opacity: 0 !important; }
+/* Size the ring with a transform-free trick so it never fights the follow transform */
+.cursor-ring { transition: opacity 0.25s ease, width 0.3s cubic-bezier(0.22, 1, 0.36, 1), height 0.3s cubic-bezier(0.22, 1, 0.36, 1), margin 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease; }
+.cursor-ring.is-hot { width: 58px; height: 58px; margin: -29px 0 0 -29px; }
+:root[data-theme="light"] .cursor-ring { border-color: rgba(214, 74, 24, 0.8); box-shadow: 0 0 18px 1px rgba(255, 107, 53, 0.3); }
+
+/* ---------- Magnetic buttons ---------- */
+.btn, .icon-btn, .pa-launcher, [data-magnetic] { transition-property: translate, transform, background-color, border-color, color, box-shadow, opacity; }
+.is-magnet { transition: translate 0.12s linear !important; }
+.btn:not(.is-magnet), .icon-btn:not(.is-magnet), [data-magnetic]:not(.is-magnet) { transition: translate 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+    body { animation: none !important; }
+    body::after { display: none; }
+}
