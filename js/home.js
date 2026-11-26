@@ -193,6 +193,7 @@
         var badge = $('#hangingBadge');
         var hint = $('#dragHint');
         var card = badge ? $('.idcard', badge) : null;
+        var holo = card ? $('.idcard-holo', card) : null;
         if (!wrapper || !canvas || !badge || !canvas.getContext) return;
 
         var ctx = canvas.getContext('2d');
@@ -457,6 +458,13 @@
             badge.style.top = (end.y + CLIP_OFFSET) + 'px';
             badge.style.transform = 'perspective(900px) rotateZ(' + rotZ.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) rotateX(' + rotX.toFixed(2) + 'deg)';
             if (card) card.style.setProperty('--gloss', (rotY * 2.6 - rotZ * 1.6).toFixed(1) + '%');
+            if (holo) {
+                // Holographic foil: the rainbow slides and brightens with the tilt.
+                // Transform and opacity only, so it stays on the compositor.
+                var hx = rotY * 2.2 - rotZ * 1.5, hy = rotX * 2.4 + rotZ * 0.6;
+                holo.style.transform = 'translate3d(' + hx.toFixed(2) + '%,' + hy.toFixed(2) + '%,0)';
+                holo.style.opacity = Math.min(0.9, 0.45 + (Math.abs(rotZ) + Math.abs(rotY)) * 0.035).toFixed(3);
+            }
 
             draw();
             return motion;
@@ -795,4 +803,31 @@
 
         render();
     }
+    /* ======================================================================
+       Glass service cards: the glowing edge follows the cursor (desktop).
+       One listener on the list, one write per frame, CSS does the drawing.
+       Touch screens keep a soft static glow from CSS instead.
+       ====================================================================== */
+    (function glassCards() {
+        var list = document.querySelector('.services');
+        if (!list || !window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+        var cards = list.querySelectorAll('.service');
+        var raf = 0, px = 0, py = 0;
+        function paint() {
+            raf = 0;
+            for (var i = 0; i < cards.length; i++) {
+                var r = cards[i].getBoundingClientRect();
+                // Only cards near the pointer need an update
+                if (py < r.top - 260 || py > r.bottom + 260) continue;
+                cards[i].style.setProperty('--mx', (px - r.left).toFixed(0) + 'px');
+                cards[i].style.setProperty('--my', (py - r.top).toFixed(0) + 'px');
+            }
+        }
+        list.addEventListener('pointermove', function (e) {
+            if (e.pointerType !== 'mouse') return;
+            px = e.clientX; py = e.clientY;
+            if (!raf) raf = requestAnimationFrame(paint);
+        }, { passive: true });
+        list.classList.add('has-spotlight');
+    })();
 })();
