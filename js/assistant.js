@@ -250,11 +250,11 @@
             '<div class="pa-foot">' +
                 '<form class="pa-form" autocomplete="off">' +
                     '<label class="pa-visually-hidden" for="paInput">Your question</label>' +
-                    '<input class="pa-input" id="paInput" type="text" maxlength="300" placeholder="Ask about services, rates, availability…" enterkeyhint="send">' +
+                    '<input class="pa-input" id="paInput" type="text" maxlength="300" placeholder="Ask a question…" enterkeyhint="send">' +
                     '<button class="pa-send" type="submit" aria-label="Send">' + ICON_SEND + '</button>' +
                 '</form>' +
                 '<a class="pa-handoff" href="' + MESSENGER + '" target="_blank" rel="noopener noreferrer">' + ICON_MSG + '<span>Message Paulo on Messenger</span></a>' +
-                '<p class="pa-note">Answers come only from this site. Nothing you type leaves your browser unless you send it to Paulo.</p>' +
+                '<p class="pa-note">Answers come only from this site. Nothing leaves your browser unless you message Paulo.</p>' +
             '</div>';
 
         root.appendChild(panel);
